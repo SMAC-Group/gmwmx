@@ -2,7 +2,7 @@
 title: "Load data, estimate and compare models"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Estimate a model}
+  %\VignetteIndexEntry{Load data, estimate and compare models}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

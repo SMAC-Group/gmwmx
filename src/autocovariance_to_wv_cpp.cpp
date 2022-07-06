@@ -2,7 +2,7 @@
 #include <numeric>
 using namespace Rcpp;
 
-//'  Subset range of a vector
+//  Subset range of a vector
 // 
 Rcpp::NumericVector subset_range(Rcpp::NumericVector x,
                                  int start = 1, int end = 100) {
@@ -12,7 +12,7 @@ Rcpp::NumericVector subset_range(Rcpp::NumericVector x,
 }
 
 
-//'  Vectorized exponentiation
+//  Vectorized exponentiation
 // 
 NumericVector compute_power_of_a_base(int x, int J){
   IntegerVector power = seq(0, J);
@@ -25,10 +25,10 @@ NumericVector compute_power_of_a_base(int x, int J){
 
 
 
-//' Compute the theoretical WV given the autocovariance vector 
-//' 
-//' @param acf A \code{vector} specifying the autocovariance vector
-//' @param tau A \code{vector} of Wavelet Variance scales
+// Compute the theoretical WV given the autocovariance vector 
+// 
+// @param acf A \code{vector} specifying the autocovariance vector
+// @param tau A \code{vector} of Wavelet Variance scales
 // [[Rcpp::export]]
 NumericVector autocovariance_to_wv(const NumericVector acf, const NumericVector tau) {
   // compute max scale

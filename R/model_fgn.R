@@ -32,10 +32,10 @@ fgn_theo_wv = function(theta, scales) {
   sigma2*(1 - 2^(2*H - 2))*(scales/2)^(2*H - 2)
 }
 
-#' FGN autocovariance
-#' 
-#' @param theta A \code{vector} of length 2 specifying the parameters of the FGN
-#' @param n A \code{scalar} specifying the length of the signal
+# FGN autocovariance
+# 
+# @param theta A \code{vector} of length 2 specifying the parameters of the FGN
+# @param n A \code{scalar} specifying the length of the signal
 #' @importFrom longmemo ckFGN0
 fgn_autocovariance = function(theta, n) {
   sigma2 = theta[1]

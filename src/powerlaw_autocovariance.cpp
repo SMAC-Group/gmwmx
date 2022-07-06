@@ -2,9 +2,9 @@
 #include <numeric>
 using namespace Rcpp;
 
-//' Compute the power law autocovariance vector
-//' @param theta A \code{vector} of length 2 specifying the parameters of the powerlaw process
-//' @param n A \code{scalar} specifying the length of the signal
+// Compute the power law autocovariance vector
+// @param theta A \code{vector} of length 2 specifying the parameters of the powerlaw process
+// @param n A \code{scalar} specifying the length of the signal
 // [[Rcpp::export]]
 NumericVector powerlaw_autocovariance(const NumericVector theta, const int n) {
   double sigma2 = theta(0);
