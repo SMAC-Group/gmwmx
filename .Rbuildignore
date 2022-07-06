@@ -1,0 +1,12 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+working_material
+scripts
+results
+.raw
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^data-raw$
+^cran-comments.md$

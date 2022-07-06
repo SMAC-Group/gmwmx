@@ -1,0 +1,38 @@
+Package: gmwmx
+Title: Estimate functional and stochastic parameters of linear models with correlated residuals
+Version: 0.1.0
+Authors@R: c(
+    person("Davide Antonio", "Cucci", role = c("aut")),
+    person("Lionel", "Voirol", email = "lionelvoirol@hotmail.com", role = c("aut", "cre")),
+    person("Stéphane", "Guerrier", role = "aut"),
+    person("Jean-Philippe", "Montillet", role = "ctb"),
+    person("Gaël", "Kermarrec", role = "ctb")
+    )
+License: AGPL-3 + file LICENSE
+Description: The gmwmx R package implements the Generalized Method of Wavelet Moments with Exogenous Inputs estimator (GMWMX).
+             The GMWMX estimator allows to estimate functional and stochastic parameters of linear models with correlated residuals. 
+             The gmwmx package provides functions to estimate, compare and analyze models, utilities to load and work with Global Navigation Satellite System (GNSS) data as well as methods to compare results with the Maximum Likelihood Estimator (MLE) implemented in Hector.
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Remotes: Bart6114/infuser,
+         SMAC-Group/simts
+Depends:
+    R (>= 4.0.0)
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
+LinkingTo: 
+    Rcpp,
+    RcppArmadillo
+Imports: 
+    Rcpp,
+    fs,
+    stringi,
+    infuser,
+    wv,
+    Matrix,
+    longmemo,
+    rjson,
+    simts

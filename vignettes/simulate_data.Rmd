@@ -1,0 +1,188 @@
+---
+title: "Generate data from a model"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Generate data from a model}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  % \VignetteDepends{simts}
+---
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+```
+
+```{r}
+rm(list=ls())
+```
+
+
+```{r}
+# libraries
+library(simts)
+library(gmwmx)
+```
+
+
+```{r, eval=T, echo=T, message=F}
+phase =     0.45
+amplitude = 2.5
+sigma2_wn =       15
+sigma2_powerlaw = 10
+d =               0.4
+bias =            0
+trend =           5/365.25
+cosU =            amplitude*cos(phase)
+sinU =            amplitude*sin(phase)
+```
+
+
+Let us consider a period of 5 year with daily observations:
+```{r, eval=T, echo=T, message=F}
+n = 5*365
+```
+
+Using functions implemented in `simts`, we generate realizations from the sum of a White noise and PowerLaw process.
+```{r, eval=T, echo=T, message=F}
+model_i = WN(sigma2 = sigma2_wn) + PLP(sigma2 = sigma2_powerlaw, d = d) 
+
+# define time at which there are jumps
+jump_vec =  c(600, 1200)
+jump_height = c(20, 30)
+
+# define myseed
+myseed=123
+```
+
+We generate residuals from the stochastic model
+```{r, eval=T, echo=T, message=F}
+# generate residuals
+eps = simts::gen_gts(model = model_i, n= n)
+```
+
+Using function `create_A_matrix()`, we encode the intercept, a deterministic vector (trend) and sinusoidal signals in a matrix $\boldsymbol{A}$ in order to compute the deterministic component of the signal in a linear fashion. Similarly, we define the vector of fixed coefficients denoted by $\boldsymbol{x}_0$ in the paper.
+
+```{r, eval=T, echo=T, message=F}
+# add trend and sin
+A = gmwmx::create_A_matrix(t_nogap = 1:length(eps), n_seasonal =  1, jumps = NULL)
+
+# define beta
+x_0 = c(bias, trend,  cosU,  sinU)
+  
+# create time series
+deterministic_signal = A %*% x_0
+```
+
+We can graphically represent the functional and stochastic component of the model as follows
+```{r, fig.height=8, fig.width=6, fig.align='center'}
+plot(deterministic_signal, type="l")
+plot(eps)
+```
+
+We can add location shifts (jumps) in the signal as such: 
+```{r}
+# add trend, gaps and sin
+A = gmwmx::create_A_matrix(t_nogap = 1:length(eps), n_seasonal =  1, jumps = jump_vec)
+
+# define beta
+x_0 = c(bias, trend,  cosU,  sinU, jump_height)
+  
+# create time series
+deterministic_signal = A %*% x_0
+```
+
+```{r, fig.height=8, fig.width=6, fig.align='center'}
+plot(deterministic_signal, type="l")
+plot(eps)
+```
+
+
+We can then define and plot the generated time series
+```{r, fig.height=8, fig.width=6, fig.align='center'}
+yy = deterministic_signal + eps
+plot(yy)
+```
+
+We define a `gnssts` object.
+```{r, eval=T}
+# save signal in temp
+gnssts_obj = create.gnssts(t = 1:length(yy), y = yy, jumps = jump_vec)
+```
+
+```{r, eval=T}
+class(gnssts_obj)
+```
+We can save a `gnssts` object as a `.mom` file with the function `write.gnssts()`
+```{r, eval=F, echo=T}
+write.gnssts(gnssts_obj, filename = "simulated_data.mom")
+```
+
+The saved `.mom` file will have the following structure:
+
+```
+# sampling period 1.000000
+# offset 100.000000
+# offset 200.000000
+1 9.89397119231205
+2 8.52434609242207
+3 9.32563441388655
+4 13.4598690226589
+5 8.21468271071893
+6 -1.62924569468478
+7 17.8036063408026
+8 7.13794134326489
+9 5.34700832531847
+```
+
+```{r, fig.height=8, fig.width=6, fig.align='center'}
+fit_gmwmx = gmwmx::estimate_gmwmx(x = gnssts_obj,
+                                  model_string = "wn+powerlaw",
+                                  n_seasonal = 1,
+                                  theta_0 = c(0.1, 0.1, 0.1),
+                                  k_iter = 1)
+
+fit_gmwmx
+plot(fit_gmwmx)
+```
+
+
+```{r, fig.height=8, fig.width=6, fig.align='center'}
+fit_gmwmx_2 = gmwmx::estimate_gmwmx(x = gnssts_obj,
+                                    model_string = "wn+powerlaw",
+                                    n_seasonal = 1,
+                                    theta_0 = c(0.1, 0.1, 0.1),
+                                    k_iter = 2)
+
+fit_gmwmx_2
+plot(fit_gmwmx_2)
+```
+
+```{r, eval=F, echo=T}
+fit_mle_hector = gmwmx::estimate_hector(x = gnssts_obj,
+                                    model_string = "wn+powerlaw",
+                                    n_seasonal = 1
+                                    )
+
+
+```
+
+
+```{r, eval=F, echo=F}
+save(fit_mle_hector,file="fit_mle_hector.rda")
+```
+
+
+```{r, eval=T, echo=F}
+# fit_mle_hector is save in inst/extdata
+file_path = system.file("extdata", "fit_mle_hector.rda", package = "gmwmx", mustWork = T)
+load(file = file_path)
+```
+
+```{r, fig.height=8, fig.width=6, fig.align='center'}
+fit_mle_hector
+plot(fit_mle_hector)
+```
+

@@ -1,0 +1,10 @@
+pandoc: 2.14.0.3
+pkgdown: 2.0.3
+pkgdown_sha: ~
+articles:
+  load_estimate_compare_models: load_estimate_compare_models.html
+  remove_outliers_hector: remove_outliers_hector.html
+  simulate_data: simulate_data.html
+  simulation_study: simulation_study.html
+last_built: 2022-07-06T00:17Z
+

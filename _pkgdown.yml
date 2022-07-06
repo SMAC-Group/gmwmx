@@ -1,0 +1,57 @@
+url: ~
+template:
+  params:
+    bootswatch: flatly
+
+    
+reference:
+  - title: Generate data
+    contents:
+    - create_A_matrix
+  - title: Read, write and create gnssts objects
+    contents:
+    - read.gnssts
+    - write.gnssts
+    - create.gnssts
+  - title: Estimate a model
+    contents:
+    - estimate_gmwmx
+    - estimate_hector
+  - title: Print an estimated model
+    contents:
+    - print.gnsstsmodel
+  - title: Plot an estimated model
+    contents:
+    - plot.gnsstsmodel
+  - title: Compare estimated models 
+    contents:
+    - compare_fits
+  - title: Load PBO data
+    contents:
+    - PBO_get_station
+    - PBO_get_offsets
+  - title: Hector utilities
+    contents:
+    - remove_outliers_hector
+
+navbar:
+  left:
+  - icon: fa-home
+    href: index.html
+  - text: "Examples"
+    menu:
+    - text: "Load data, estimate and compare models"
+      href: articles/load_estimate_compare_models.html
+    - text: "Simulate data"
+      href: articles/simulate_data.html     
+    - text: "Remove extreme values from signal with Hector"
+      href: articles/remove_outliers_hector.html  
+    - text: "Simulation study: comparing the GMWMX-1, GMWMX-2 and MLE"
+      href: articles/simulation_study.html  
+  - text: Reference
+    href: reference/index.html
+  right:
+  - icon: fa-github
+    href: https://github.com/SMAC-Group
+    
+
