@@ -4,10 +4,8 @@
 
 <!-- badges: start -->
 ![](https://img.shields.io/github/last-commit/SMAC-Group/gmwmx) 
-[<img src="https://s-a.github.io/license/img/agpl-3.0.svg" />](https://s-a.github.io/license/?license=agpl-3.0&fullname=Stephan%20Ahlf&year=2015&profile=https://github.com/s-a&projectUrl=https://github.com/s-a/license&projectName=License%20Demo "")  
-[![minimal R
-version](https://img.shields.io/badge/R%3E%3D-4.0.0-6666ff.svg)](https://cran.r-project.org/)
-
+[<img src="https://s-a.github.io/license/img/agpl-3.0.svg" />](https://s-a.github.io/license/?license=agpl-3.0&fullname=Stephan%20Ahlf&year=2015&profile=https://github.com/s-a&projectUrl=https://github.com/s-a/license&projectName=License%20Demo "")
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-4.0.0-6666ff.svg)](https://cran.r-project.org/)
 <!-- badges: end -->
 
 
@@ -15,6 +13,8 @@ version](https://img.shields.io/badge/R%3E%3D-4.0.0-6666ff.svg)](https://cran.r-
 
 
 The `gmwmx` `R` package implement the Generalized Method of Wavelet Moments with Exogenous Inputs estimator (GMWMX) introduced in [Cucci et al. (2022)](https://arxiv.org/abs/2206.09668) and provides functions to estimate times series models that can be expressed as linear models with correlated residuals. Moreover, the `gmwmx` package provides tools to compare and analyze estimated models and methods to easily compare results with the Maximum Likelihood Estimator (MLE) implemented in [Hector](https://teromovigo.com/hector/), allowing to replicate the examples and simulations considered in [Cucci et al. (2022)](https://arxiv.org/abs/2206.09668). In particular, this package implements a statistical inference framework for the functional and stochastic parameters of models such as those used to model Global Navigation Satellite System (GNSS) observations, enabling the comparison of the proposed method to the standard MLE estimates implemented in [Hector](https://teromovigo.com/hector/). 
+
+Find the package vignettes and user's manual at the [package website](https://smac-group.github.io/gmwmx/index.html).
 
 Below are instructions on how to install and make use of the `gmwmx`
 package.
