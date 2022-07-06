@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-![](https://img.shields.io/github/last-commit/SMAC-Group/gmwm_tls_gnss) 
+![](https://img.shields.io/github/last-commit/SMAC-Group/gmwmx) 
 
 [<img src="https://s-a.github.io/license/img/agpl-3.0.svg" />](https://s-a.github.io/license/?license=agpl-3.0&fullname=Stephan%20Ahlf&year=2015&profile=https://github.com/s-a&projectUrl=https://github.com/s-a/license&projectName=License%20Demo "")  
 
