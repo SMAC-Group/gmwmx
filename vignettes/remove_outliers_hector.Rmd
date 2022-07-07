@@ -40,7 +40,7 @@ N = c(1, 7.5, 10, 15, 20)*365
 
 # consider 2 year of data
 n = N[1]
-model_i = WN(sigma2 = sigma2_wn) + PLP(sigma2 = sigma2_powerlaw, d = d) 
+model_i = WN(sigma2 = sigma2_wn) 
 
 # define time at which there are jumps
 jump_vec =  c(100, 200)
@@ -64,6 +64,9 @@ x_0 = c(bias, trend, jump_height,  cosU,  sinU)
 # create time series
 yy = A %*% x_0 + eps
 ```
+
+
+
 
 We plot the generated time series
 ```{r}

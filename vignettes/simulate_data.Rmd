@@ -5,7 +5,7 @@ vignette: >
   %\VignetteIndexEntry{Generate data from a model}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  % \VignetteDepends{simts}
+
 ---
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -46,9 +46,12 @@ n = 5*365
 ```
 
 Using functions implemented in `simts`, we generate realizations from the sum of a White noise and PowerLaw process.
-```{r, eval=T, echo=T, message=F}
-model_i = WN(sigma2 = sigma2_wn) + PLP(sigma2 = sigma2_powerlaw, d = d) 
+```{r, eval=F, echo=T, message=F}
+model_i = WN(sigma2 = sigma2_wn) + PLP(sigma2 = sigma2_powerlaw, d = d)
+```
 
+
+```{r, eval=T, echo=T, message=F}
 # define time at which there are jumps
 jump_vec =  c(600, 1200)
 jump_height = c(20, 30)
@@ -58,10 +61,16 @@ myseed=123
 ```
 
 We generate residuals from the stochastic model
-```{r, eval=T, echo=T, message=F}
+```{r, eval=F, echo=T, message=F}
 # generate residuals
 eps = simts::gen_gts(model = model_i, n= n)
 ```
+
+```{r, evaL=T, echo=F}
+file_path_eps_simulate_data = system.file("extdata", "eps.rda", package = "gmwmx", mustWork = T)
+load(file_path_eps_simulate_data)
+```
+
 
 Using function `create_A_matrix()`, we encode the intercept, a deterministic vector (trend) and sinusoidal signals in a matrix $\boldsymbol{A}$ in order to compute the deterministic component of the signal in a linear fashion. Similarly, we define the vector of fixed coefficients denoted by $\boldsymbol{x}_0$ in the paper.
 

@@ -64,6 +64,14 @@ n <- year * 365
 ```
 
 We consider a gaussian White noise and a Power Law process as the stochastic model of the residuals $\varepsilon$.
+
+Note that the functions that enable to generate stochastic models that include Power Law process, Matèrn process or Fractional Gaussian noise are (for now) only available from the development version of the package `simts` that can be easily installed with:
+
+```{r, eval=F}
+install.packages("devtools")
+devtools::install_github("SMAC-Group/simts")
+```
+
 ```{r}
 # define model for generating gaussian white noise + PLP
 model_gaussian_wn_plp <- WN(sigma2 = sigma2_wn) + PLP(sigma2 = sigma2_powerlaw, d = d)
