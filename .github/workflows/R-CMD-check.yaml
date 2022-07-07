@@ -47,18 +47,10 @@ jobs:
         with:
           extra-packages: rcmdcheck
           needs: check
-      
-      - name: devtools
-        run: install.packages("devtools")
-        shell: Rscript {0}
           
-      - name: Install Bart6114/infuser
-        run: devtools::install_github("Bart6114/infuser")
-        shell: Rscript {0}
         
       - uses: r-lib/actions/check-r-package@v2
-        with:
-          error-on: '"error"'
+
 
 
       - name: Show testthat output
