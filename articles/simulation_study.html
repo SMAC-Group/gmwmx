@@ -144,32 +144,36 @@
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="va">year</span> <span class="op">*</span> <span class="fl">365</span></span></code></pre></div>
 <p>We consider a gaussian White noise and a Power Law process as the stochastic model of the residuals <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Note that the functions that enable to generate stochastic models that include Power Law process, Matèrn process or Fractional Gaussian noise are (for now) only available from the development version of the package <code>simts</code> that can be easily installed with:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># define model for generating gaussian white noise + PLP</span></span>
-<span><span class="va">model_gaussian_wn_plp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/WN.html" class="external-link">WN</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_wn</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/PLP.html" class="external-link">PLP</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_powerlaw</span>, d <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span></code></pre></div>
-<p>We consider three location shifts (jumps) at three different heights.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"SMAC-Group/simts"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># define model for generating gaussian white noise + PLP</span></span>
+<span><span class="va">model_gaussian_wn_plp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/WN.html" class="external-link">WN</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_wn</span><span class="op">)</span> <span class="op">+</span> <span class="fu">PLP</span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_powerlaw</span>, d <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span></code></pre></div>
+<p>We consider three location shifts (jumps) at three different heights.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># generate data</span></span>
 <span><span class="co"># define time at which there are jumps</span></span>
 <span><span class="va">jump_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">300</span>, <span class="fl">500</span><span class="op">)</span></span>
 <span><span class="va">jump_height</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <p>We define a seed for reproducibility</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># define seed</span></span>
 <span><span class="va">myseed</span> <span class="op">&lt;-</span> <span class="fl">123</span></span>
 <span></span>
 <span><span class="co"># add trend, gaps and sin</span></span>
 <span><span class="va">nbr_sin</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="co"># define number of sinusoidal process</span></span></code></pre></div>
 <p>and create the matrix <span class="math inline">\(\boldsymbol{A}\)</span> with function <code><a href="../reference/create_A_matrix.html">create_A_matrix()</a></code>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># define A matrix</span></span>
 <span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_A_matrix.html">create_A_matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="va">jump_vec</span>, n_seasonal <span class="op">=</span> <span class="va">nbr_sin</span><span class="op">)</span></span></code></pre></div>
 <p>We set the vector of functional parameters <span class="math inline">\(\boldsymbol{x}_0\)</span>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># define beta</span></span>
 <span><span class="va">x_0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">bias</span>, <span class="va">trend</span>, <span class="va">cosU</span>, <span class="va">sinU</span>, <span class="va">jump_height</span><span class="op">)</span></span></code></pre></div>
 <p>We define the number of simulations to perform</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># define number of Monte Carlo simulation</span></span>
 <span><span class="va">n_simu</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
 <span></span>
@@ -182,7 +186,7 @@
 <span><span class="co"># define matrix of results</span></span>
 <span><span class="va">mat_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, ncol <span class="op">=</span> <span class="va">dim_mat_results</span>, nrow <span class="op">=</span> <span class="va">n_simu</span><span class="op">)</span></span></code></pre></div>
 <p>We perform the simulation, saving for each Monte Carlo run, the estimated parameters of the functional and stochastic model and the empirical coverage on the functional parameters for the GMWMX-1, the GMWMX-2 as well as the MLE implemented in <a href="https://teromovigo.com/hector/" class="external-link">Hector</a>.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">simu_b</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="va">n_simu</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  </span>
 <span>  <span class="co"># fix seed for reproducibility</span></span>
@@ -275,7 +279,7 @@
 <span>  <span class="co"># print status</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Completed simulation"</span>, <span class="va">simu_b</span>, <span class="st">"\n"</span>,sep <span class="op">=</span> <span class="st">" "</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># define names of mat results</span></span>
 <span><span class="va">name_param_functionnal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bias"</span>, <span class="st">"trend"</span>, <span class="st">"cosU"</span>, <span class="st">"sinU"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">mat_results</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
