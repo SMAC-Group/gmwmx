@@ -46,6 +46,14 @@ n = 5*365
 ```
 
 Using functions implemented in `simts`, we generate realizations from the sum of a White noise and PowerLaw process.
+
+Note that the functions that enable to generate stochastic models that include Power Law process, Matèrn process or Fractional Gaussian noise are (for now) only available from the development version of the package `simts` that can be easily installed with:
+
+```{r, eval=F}
+install.packages("devtools")
+devtools::install_github("SMAC-Group/simts")
+```
+
 ```{r, eval=F, echo=T, message=F}
 model_i = WN(sigma2 = sigma2_wn) + PLP(sigma2 = sigma2_powerlaw, d = d)
 ```

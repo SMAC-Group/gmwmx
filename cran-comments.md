@@ -7,6 +7,7 @@ Duration: 1m 17.1s
 
 
 # Rhub check
+
 ## macos-highsierra-release-cran
 
 ── gmwmx 1.0.0: OK
@@ -18,6 +19,11 @@ Duration: 1m 17.1s
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
+# Windows check with `devtools::check_win_devel()`
+
+Status: 1 NOTE
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Lionel Voirol <lionelvoirol@hotmail.com>'
 
 ## R-CMD-check on GitHub actions 
 
