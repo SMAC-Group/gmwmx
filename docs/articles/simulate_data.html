@@ -128,20 +128,20 @@
 <code class="sourceCode R"><span class="va">n</span> <span class="op">=</span> <span class="fl">5</span><span class="op">*</span><span class="fl">365</span></code></pre></div>
 <p>Using functions implemented in <code>simts</code>, we generate realizations from the sum of a White noise and PowerLaw process.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">model_i</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/WN.html" class="external-link">WN</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_wn</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/PLP.html" class="external-link">PLP</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_powerlaw</span>, d <span class="op">=</span> <span class="va">d</span><span class="op">)</span> 
-
-<span class="co"># define time at which there are jumps</span>
+<code class="sourceCode R"><span class="va">model_i</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/WN.html" class="external-link">WN</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_wn</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/PLP.html" class="external-link">PLP</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_powerlaw</span>, d <span class="op">=</span> <span class="va">d</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># define time at which there are jumps</span>
 <span class="va">jump_vec</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">600</span>, <span class="fl">1200</span><span class="op">)</span>
 <span class="va">jump_height</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">30</span><span class="op">)</span>
 
 <span class="co"># define myseed</span>
 <span class="va">myseed</span><span class="op">=</span><span class="fl">123</span></code></pre></div>
 <p>We generate residuals from the stochastic model</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># generate residuals</span>
 <span class="va">eps</span> <span class="op">=</span> <span class="fu">simts</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/simts/man/gen_gts.html" class="external-link">gen_gts</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">model_i</span>, n<span class="op">=</span> <span class="va">n</span><span class="op">)</span></code></pre></div>
 <p>Using function <code><a href="../reference/create_A_matrix.html">create_A_matrix()</a></code>, we encode the intercept, a deterministic vector (trend) and sinusoidal signals in a matrix <span class="math inline">\(\boldsymbol{A}\)</span> in order to compute the deterministic component of the signal in a linear fashion. Similarly, we define the vector of fixed coefficients denoted by <span class="math inline">\(\boldsymbol{x}_0\)</span> in the paper.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># add trend and sin</span>
 <span class="va">A</span> <span class="op">=</span> <span class="fu">gmwmx</span><span class="fu">::</span><span class="fu"><a href="../reference/create_A_matrix.html">create_A_matrix</a></span><span class="op">(</span>t_nogap <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">eps</span><span class="op">)</span>, n_seasonal <span class="op">=</span>  <span class="fl">1</span>, jumps <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
@@ -151,14 +151,14 @@
 <span class="co"># create time series</span>
 <span class="va">deterministic_signal</span> <span class="op">=</span> <span class="va">A</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">x_0</span></code></pre></div>
 <p>We can graphically represent the functional and stochastic component of the model as follows</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">deterministic_signal</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></code></pre></div>
-<p><img src="simulate_data_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">eps</span><span class="op">)</span></code></pre></div>
-<p><img src="simulate_data_files/figure-html/unnamed-chunk-9-2.png" width="576" style="display: block; margin: auto;"></p>
-<p>We can add location shifts (jumps) in the signal as such:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">deterministic_signal</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></code></pre></div>
+<p><img src="simulate_data_files/figure-html/unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">eps</span><span class="op">)</span></code></pre></div>
+<p><img src="simulate_data_files/figure-html/unnamed-chunk-11-2.png" width="576" style="display: block; margin: auto;"></p>
+<p>We can add location shifts (jumps) in the signal as such:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># add trend, gaps and sin</span>
 <span class="va">A</span> <span class="op">=</span> <span class="fu">gmwmx</span><span class="fu">::</span><span class="fu"><a href="../reference/create_A_matrix.html">create_A_matrix</a></span><span class="op">(</span>t_nogap <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">eps</span><span class="op">)</span>, n_seasonal <span class="op">=</span>  <span class="fl">1</span>, jumps <span class="op">=</span> <span class="va">jump_vec</span><span class="op">)</span>
 
@@ -167,26 +167,26 @@
   
 <span class="co"># create time series</span>
 <span class="va">deterministic_signal</span> <span class="op">=</span> <span class="va">A</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">x_0</span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">deterministic_signal</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></code></pre></div>
-<p><img src="simulate_data_files/figure-html/unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">eps</span><span class="op">)</span></code></pre></div>
-<p><img src="simulate_data_files/figure-html/unnamed-chunk-11-2.png" width="576" style="display: block; margin: auto;"></p>
-<p>We can then define and plot the generated time series</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">deterministic_signal</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></code></pre></div>
+<p><img src="simulate_data_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">eps</span><span class="op">)</span></code></pre></div>
+<p><img src="simulate_data_files/figure-html/unnamed-chunk-13-2.png" width="576" style="display: block; margin: auto;"></p>
+<p>We can then define and plot the generated time series</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">yy</span> <span class="op">=</span> <span class="va">deterministic_signal</span> <span class="op">+</span> <span class="va">eps</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span></code></pre></div>
-<p><img src="simulate_data_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="simulate_data_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;"></p>
 <p>We define a <code>gnssts</code> object.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># save signal in temp</span>
 <span class="va">gnssts_obj</span> <span class="op">=</span> <span class="fu"><a href="../reference/create.gnssts.html">create.gnssts</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">yy</span>, jumps <span class="op">=</span> <span class="va">jump_vec</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">gnssts_obj</span><span class="op">)</span>
 <span class="co">#&gt; [1] "gnssts"</span></code></pre></div>
 <p>We can save a <code>gnssts</code> object as a <code>.mom</code> file with the function <code><a href="../reference/write.gnssts.html">write.gnssts()</a></code></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/write.gnssts.html">write.gnssts</a></span><span class="op">(</span><span class="va">gnssts_obj</span>, filename <span class="op">=</span> <span class="st">"simulated_data.mom"</span><span class="op">)</span></code></pre></div>
 <p>The saved <code>.mom</code> file will have the following structure:</p>
 <pre><code># sampling period 1.000000
@@ -201,7 +201,7 @@
 7 17.8036063408026
 8 7.13794134326489
 9 5.34700832531847</code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_gmwmx</span> <span class="op">=</span> <span class="fu">gmwmx</span><span class="fu">::</span><span class="fu"><a href="../reference/estimate_gmwmx.html">estimate_gmwmx</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gnssts_obj</span>,
                                   model_string <span class="op">=</span> <span class="st">"wn+powerlaw"</span>,
                                   n_seasonal <span class="op">=</span> <span class="fl">1</span>,
@@ -214,22 +214,22 @@
 <span class="co">#&gt;  * Model:  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Functional parameters:</span>
-<span class="co">#&gt;      bias                           :     -2.53843300</span>
-<span class="co">#&gt;      trend                          :     +0.01280823</span>
-<span class="co">#&gt;      A*cos(U)                       :     +2.68084407</span>
-<span class="co">#&gt;      A*sin(U)                       :     +1.27378152</span>
-<span class="co">#&gt;      jump                           :    +20.25955393</span>
-<span class="co">#&gt;      jump                           :    +31.09928044</span>
+<span class="co">#&gt;      bias                           :     +0.77852038</span>
+<span class="co">#&gt;      trend                          :     +0.01580355</span>
+<span class="co">#&gt;      A*cos(U)                       :     +2.36646389</span>
+<span class="co">#&gt;      A*sin(U)                       :     +1.95820353</span>
+<span class="co">#&gt;      jump                           :    +20.06161977</span>
+<span class="co">#&gt;      jump                           :    +30.59608513</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Stochastc parameters:</span>
-<span class="co">#&gt;      wn_sigma2                      :    +15.38320543</span>
-<span class="co">#&gt;      powerlaw_sigma2                :    +10.23917630</span>
-<span class="co">#&gt;      powerlaw_d                     :     +0.39584257</span>
+<span class="co">#&gt;      wn_sigma2                      :    +12.23377791</span>
+<span class="co">#&gt;      powerlaw_sigma2                :    +11.45841384</span>
+<span class="co">#&gt;      powerlaw_d                     :     +0.34904886</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;  * Estimation time: 0.27 s</span>
+<span class="co">#&gt;  * Estimation time: 0.28 s</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_gmwmx</span><span class="op">)</span></code></pre></div>
-<p><img src="simulate_data_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<p><img src="simulate_data_files/figure-html/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_gmwmx_2</span> <span class="op">=</span> <span class="fu">gmwmx</span><span class="fu">::</span><span class="fu"><a href="../reference/estimate_gmwmx.html">estimate_gmwmx</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gnssts_obj</span>,
                                     model_string <span class="op">=</span> <span class="st">"wn+powerlaw"</span>,
                                     n_seasonal <span class="op">=</span> <span class="fl">1</span>,
@@ -242,27 +242,27 @@
 <span class="co">#&gt;  * Model:  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Functional parameters:</span>
-<span class="co">#&gt;      bias                           :     -1.65808472</span>
-<span class="co">#&gt;      trend                          :     +0.01304589</span>
-<span class="co">#&gt;      A*cos(U)                       :     +2.48755630</span>
-<span class="co">#&gt;      A*sin(U)                       :     +1.29615398</span>
-<span class="co">#&gt;      jump                           :    +18.61122389</span>
-<span class="co">#&gt;      jump                           :    +31.85528679</span>
+<span class="co">#&gt;      bias                           :     +0.88713871</span>
+<span class="co">#&gt;      trend                          :     +0.01649642</span>
+<span class="co">#&gt;      A*cos(U)                       :     +2.43946695</span>
+<span class="co">#&gt;      A*sin(U)                       :     +2.04648501</span>
+<span class="co">#&gt;      jump                           :    +19.53675553</span>
+<span class="co">#&gt;      jump                           :    +30.89067705</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Stochastc parameters:</span>
-<span class="co">#&gt;      wn_sigma2                      :    +15.44979442</span>
-<span class="co">#&gt;      powerlaw_sigma2                :    +10.14752542</span>
-<span class="co">#&gt;      powerlaw_d                     :     +0.39507013</span>
+<span class="co">#&gt;      wn_sigma2                      :    +12.30793555</span>
+<span class="co">#&gt;      powerlaw_sigma2                :    +11.37269314</span>
+<span class="co">#&gt;      powerlaw_d                     :     +0.35012119</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;  * Estimation time: 6.88 s</span>
+<span class="co">#&gt;  * Estimation time: 6.65 s</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_gmwmx_2</span><span class="op">)</span></code></pre></div>
-<p><img src="simulate_data_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<p><img src="simulate_data_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_mle_hector</span> <span class="op">=</span> <span class="fu">gmwmx</span><span class="fu">::</span><span class="fu"><a href="../reference/estimate_hector.html">estimate_hector</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gnssts_obj</span>,
                                     model_string <span class="op">=</span> <span class="st">"wn+powerlaw"</span>,
                                     n_seasonal <span class="op">=</span> <span class="fl">1</span>
                                     <span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_mle_hector</span>
 <span class="co">#&gt; GNSS time series model</span>
 <span class="co">#&gt; </span>
@@ -283,7 +283,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Estimation time: 20.17 s</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_mle_hector</span><span class="op">)</span></code></pre></div>
-<p><img src="simulate_data_files/figure-html/unnamed-chunk-21-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="simulate_data_files/figure-html/unnamed-chunk-23-1.png" width="576" style="display: block; margin: auto;"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

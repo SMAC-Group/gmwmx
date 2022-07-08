@@ -24,7 +24,7 @@ library(simts)
 library(gmwmx)
 ```
 
-```{r, eval=T, echo=F, message=F}
+```{r, eval=T, echo=T, message=F}
 phase =     0.45
 amplitude = 2.5
 sigma2_wn =       15
