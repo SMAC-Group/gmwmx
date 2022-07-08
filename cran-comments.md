@@ -44,7 +44,17 @@ Duration: 1m 15.4s
 
 0 errors ✔ | 0 warnings ✔ | 2 notes ✖
 
+## R-CMD-check on GitHub actions 
 
+All jobs pass on 
+
+- macOS-latest (release)
+- ubuntu-latest (devel)
+- ubuntu-latest (oldrel-1)
+- ubuntu-latest (release)
+- windows-latest (release)
+
+see: https://github.com/SMAC-Group/gmwmx/actions/runs/2630550398
 
 
 # Downstream dependencies
