@@ -19,7 +19,8 @@ Depends:
     R (>= 4.0.0)
 Suggests: 
     rmarkdown,
-    knitr
+    knitr,
+    simts
 VignetteBuilder: knitr
 LinkingTo: 
     Rcpp,
@@ -31,5 +32,4 @@ Imports:
     wv,
     Matrix,
     longmemo,
-    rjson, 
-    simts
+    rjson

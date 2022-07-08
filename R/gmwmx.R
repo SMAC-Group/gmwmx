@@ -158,7 +158,7 @@ estimate_gmwmx <- function(
     theta_hat = fit_base(
       theta_0 = theta_0, 
       wv_emph = wv_rsd, 
-      model = model_string,
+      model_string  = model_string,
       method = method,
       maxit = maxit
     )
@@ -205,7 +205,7 @@ estimate_gmwmx <- function(
         theta_hat = fit_base(
           theta_0 = theta_0, 
           wv_emph = wv_rsd, 
-          model = model_string,
+          model_string = model_string,
           method = method,
           maxit = maxit
         )

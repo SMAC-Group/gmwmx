@@ -79,7 +79,7 @@ plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_i
     legend_position,
     legend=c("Empirical WV", "Estimated Theoretical WV", rownames(wvs)),
     col = c("black", cols),
-    lt = c(1, 1, rep(1, nrow(wvs))),
+    lty  = c(1, 1, rep(1, nrow(wvs))),
     pch = c(1, NA, rep(NA, nrow(wvs))),
     horiz = F,
     cex = 0.75, bty="n", bg="transparent"
