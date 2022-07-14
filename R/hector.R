@@ -79,7 +79,7 @@ estimate_hector <- function(
     x,
     n_seasonal = 1, 
     model_string,
-    cleanup = T
+    cleanup = TRUE
 ) {
 
   
@@ -238,7 +238,7 @@ estimate_hector <- function(
 #' @return A \code{gnssts} object.
 #' @export
 #' @importFrom stringi stri_rand_strings
-remove_outliers_hector <- function(x, n_seasonal, IQ_factor = 3, cleanup = T) {
+remove_outliers_hector <- function(x, n_seasonal, IQ_factor = 3, cleanup = TRUE) {
   
   if (!("gnssts" %in% class(x))) {
     stop("x must be an object of type 'gnssts")

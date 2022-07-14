@@ -2,6 +2,7 @@
 #'
 #' @param x A \code{gnsstsmodel} object.
 #' @param ... Additional graphical parameters.
+#' @return No return value. Print a \code{gnsstsmodel} object.
 #' @export
 #'
 print.gnsstsmodel <- function(x, ...) {

@@ -4,7 +4,7 @@
 #' @param y A \code{vector} specifying the values of each observation of the time series.
 #' @param jumps A \code{vector} specifying the time values for which there is a jump.
 #' @param sampling_period An \code{integer} specifying the sampling period.
-#'
+#' @return A \code{gnssts} object.
 #' @importFrom utils tail
 #' @export
 create.gnssts = function(t, y, jumps = NULL, sampling_period = 1) {
@@ -29,6 +29,12 @@ create.gnssts = function(t, y, jumps = NULL, sampling_period = 1) {
   x$jumps = jumps[valid_jumps]
   x$sampling_period = sampling_period
   
+  # if no jumps, specify jumps to NULL
+  if(length(x$jumps) == 0){
+    x$jumps = NULL
+  }
+  
+  # set class
   class(x) <- "gnssts"
   
   invisible(x)
@@ -39,7 +45,7 @@ create.gnssts = function(t, y, jumps = NULL, sampling_period = 1) {
 #' @param x A \code{R} object to save as a \code{gnssts} object.
 #' @param filename A \code{string} specifying the name of the file to write.
 #' @param format A \code{string} specifying the format of the file to write.
-#'
+#' @return No return value. Write a \code{gnssts} object in a .mom file by default. 
 #' @importFrom utils write.table
 #' @export
 write.gnssts = function(x, filename, format = "mom") {
@@ -86,13 +92,13 @@ write.gnssts = function(x, filename, format = "mom") {
 #' 
 #' @param filename A \code{string} specifying the name of the file to read.
 #' @param format A \code{string} specifying the format of the file to read.
-#'
+#' @return Return a \code{gnssts} object.
 #' @importFrom utils read.table
 #' @importFrom stringi stri_match_first
 #' @export
 read.gnssts = function(filename, format = "mom") {
   if (format == "mom") {
-    raw = read.table(file = filename, header = F, comment.char = "#")
+    raw = read.table(file = filename, header = FALSE, comment.char = "#")
     
     x = list()
     x$t = raw[,1]

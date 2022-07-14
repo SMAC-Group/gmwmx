@@ -4,7 +4,7 @@ gg_color_hue <- function(n, alpha) {
   hcl(h = hues, l = 65, c = 100, alpha = alpha)[1:n]
 }
 
-plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_ig=T, ci = T, legend_position ="topright") {
+plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_ig=T, ci = TRUE, legend_position ="topright") {
 
   if(is.null(yl)){
     yl = c(min(wv_emph$ci_low), max(wv_emph$ci_high ))
@@ -96,6 +96,7 @@ plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_i
 #' @param legend_position A \code{string} specifying the legend position of the plot.
 #' @param legend_position_wv A \code{string} specifying the legend position for the wv plot.
 #' @param ... Additional graphical parameters.
+#' @return No return value. Plot a \code{gnsstsmodel} object.
 #' @export
 #' @importFrom grDevices hcl
 #' @importFrom graphics abline axis layout legend lines mtext par points polygon rect text
@@ -111,7 +112,7 @@ plot.gnsstsmodel <- function(
 
 
   # store original plot conf
-  oldpar = par()
+  oldpar <- par(no.readonly = TRUE)
   oldpar = oldpar[!(names(oldpar) %in% c("pin", "cin", "cra", "csi", "cxy", "din", "page"))]
   
   # define parameters plotting
@@ -210,7 +211,7 @@ plot.gnsstsmodel <- function(
 
 
 
-ellipsem <- function (mu, amat, c2, npoints = 100, showcentre = T, ...) {
+ellipsem <- function (mu, amat, c2, npoints = 100, showcentre = TRUE, ...) {
   if (all(dim(amat) == c(2, 2))) {
     eamat <- eigen(amat)
     hlen <- sqrt(c2/eamat$val)
@@ -224,7 +225,7 @@ ellipsem <- function (mu, amat, c2, npoints = 100, showcentre = T, ...) {
 }
 
 
-ellipse <- function (hlaxa = 1, hlaxb = 1, theta = 0, xc = 0, yc = 0, newplot = F, npoints = 100, ...) {
+ellipse <- function (hlaxa = 1, hlaxb = 1, theta = 0, xc = 0, yc = 0, newplot = FALSE, npoints = 100, ...) {
   a <- seq(0, 2 * pi, length = npoints + 1)
   x <- hlaxa * cos(a)
   y <- hlaxb * sin(a)

@@ -4,7 +4,7 @@
 \alias{remove_outliers_hector}
 \title{Remove outliers from a gnssts object using Hector}
 \usage{
-remove_outliers_hector(x, n_seasonal, IQ_factor = 3, cleanup = T)
+remove_outliers_hector(x, n_seasonal, IQ_factor = 3, cleanup = TRUE)
 }
 \arguments{
 \item{x}{A \code{gnssts} object}

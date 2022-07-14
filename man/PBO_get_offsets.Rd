@@ -9,11 +9,14 @@ PBO_get_offsets(station_name)
 \arguments{
 \item{station_name}{A \code{string} specifying the PBO station name.}
 }
+\value{
+A \code{vector} specifying the offsets of a PBO station.
+}
 \description{
 Extract offsets for a PBO station
 }
 \examples{
-\dontrun{
+\donttest{
 pbo_cola_offsets = PBO_get_offsets(station_name = "COLA")
 pbo_cola_offsets
 }

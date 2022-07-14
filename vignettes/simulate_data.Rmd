@@ -15,9 +15,7 @@ knitr::opts_chunk$set(
 
 ```
 
-```{r}
-rm(list=ls())
-```
+
 
 
 ```{r}

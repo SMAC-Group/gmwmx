@@ -17,6 +17,9 @@ compare_fits(fit_1, fit_2, main = NULL, y_unit = "mm", x_unit = "days")
 
 \item{x_unit}{A \code{string} specifying the x axis label.}
 }
+\value{
+No return value. Produce a plot comparing two estimated models.
+}
 \description{
 Compare graphically two \code{gnsstsmodel} objects.
 }

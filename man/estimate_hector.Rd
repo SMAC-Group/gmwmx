@@ -4,7 +4,7 @@
 \alias{estimate_hector}
 \title{Estimate a stochastic model based on the MLE and the Hector implementation.}
 \usage{
-estimate_hector(x, n_seasonal = 1, model_string, cleanup = T)
+estimate_hector(x, n_seasonal = 1, model_string, cleanup = TRUE)
 }
 \arguments{
 \item{x}{A \code{gnssts} object}

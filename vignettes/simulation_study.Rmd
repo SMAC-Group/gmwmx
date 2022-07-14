@@ -16,9 +16,6 @@ knitr::opts_chunk$set(
 
 This vignette reproduce a design considered in [Cucci et al. (2022)](https://arxiv.org/abs/2206.09668) and implement a Monte Carlo simulation comparing the performance of the GMWMX-1, the GMWMX-2 and the MLE implemented in [Hector](https://teromovigo.com/hector/). Note that this file is not intended to be run on a personal computer but should rather be executed on a high performance computing cluster.
 
-```{r}
-rm(list = ls())
-```
 
 ```{r}
 # libraries

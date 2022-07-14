@@ -15,6 +15,9 @@ create.gnssts(t, y, jumps = NULL, sampling_period = 1)
 
 \item{sampling_period}{An \code{integer} specifying the sampling period.}
 }
+\value{
+A \code{gnssts} object.
+}
 \description{
 Create a gnssts object
 }

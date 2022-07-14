@@ -11,6 +11,9 @@ read.gnssts(filename, format = "mom")
 
 \item{format}{A \code{string} specifying the format of the file to read.}
 }
+\value{
+Return a \code{gnssts} object.
+}
 \description{
 Read a gnssts object
 }

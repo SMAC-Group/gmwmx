@@ -13,6 +13,9 @@ write.gnssts(x, filename, format = "mom")
 
 \item{format}{A \code{string} specifying the format of the file to write.}
 }
+\value{
+No return value. Write a \code{gnssts} object in a .mom file by default.
+}
 \description{
 Write a gnssts object
 }

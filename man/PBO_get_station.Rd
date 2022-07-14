@@ -15,11 +15,14 @@ PBO_get_station(station_name, column, time_range = c(-Inf, Inf), scale = 1)
 
 \item{scale}{A \code{scalar} specifying an optional scaling parameter applied to the extracted data.}
 }
+\value{
+A \code{gnssts} object that contains the data associated with the specified PBO station.
+}
 \description{
 Load station data from PBO
 }
 \examples{
-\dontrun{
+\donttest{
 pbo_cola_data = PBO_get_station("COLA", column="dE")
 str(pbo_cola_data)
 }

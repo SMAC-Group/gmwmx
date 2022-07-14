@@ -11,6 +11,9 @@
 
 \item{...}{Additional graphical parameters.}
 }
+\value{
+No return value. Print a \code{gnsstsmodel} object.
+}
 \description{
 Print method for a \code{gnsstsmodel} object.
 }

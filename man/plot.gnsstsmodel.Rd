@@ -29,6 +29,9 @@
 
 \item{...}{Additional graphical parameters.}
 }
+\value{
+No return value. Plot a \code{gnsstsmodel} object.
+}
 \description{
 Plotting method for a \code{gnsstsmodel} object.
 }

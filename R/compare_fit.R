@@ -5,6 +5,7 @@
 #' @param main A \code{string} specifying the plot title.
 #' @param y_unit A \code{string} specifying the y axis label. 
 #' @param x_unit A \code{string} specifying the x axis label.
+#' @return No return value. Produce a plot comparing two estimated models.
 #' @export
 compare_fits <- function(fit_1, fit_2,   
                          main = NULL,
@@ -22,12 +23,12 @@ compare_fits <- function(fit_1, fit_2,
   }
   
   # store original plot conf
-  oldpar = par()
+  oldpar <- par(no.readonly = TRUE)
   oldpar = oldpar[!(names(oldpar) %in% c("pin", "cin", "cra", "csi", "cxy", "din", "page"))]
   
   
   # define layout matrix
-  layout_mat = matrix(c(1,1,2,3), byrow = T, ncol=2, nrow=2)
+  layout_mat = matrix(c(1,1,2,3), byrow = TRUE, ncol=2, nrow=2)
   layout(mat = layout_mat,
          heights = c(1.5, 2), # Heights of the two rows
          widths = c(2, 2)) # Widths of the two columns

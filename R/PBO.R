@@ -29,11 +29,11 @@ get_file_with_cache <- function(url) {
 #' @param column A \code{string} specifying the name of the column to extract.
 #' @param time_range A \code{vector} of 2 specifying the time range of data to extract.
 #' @param scale A \code{scalar} specifying an optional scaling parameter applied to the extracted data.
-#' 
+#' @return A \code{gnssts} object that contains the data associated with the specified PBO station.
 #' @importFrom utils read.table
 #' @export
 #' @examples 
-#'\dontrun{
+#' \donttest{
 #' pbo_cola_data = PBO_get_station("COLA", column="dE")
 #' str(pbo_cola_data)
 #'}
@@ -82,8 +82,9 @@ PBO_get_station <- function(station_name, column, time_range = c(-Inf, Inf), sca
 #'Extract offsets for a PBO station
 #'
 #' @param station_name A \code{string} specifying the PBO station name.
+#' @return A \code{vector} specifying the offsets of a PBO station.
 #' @examples 
-#'\dontrun{
+#' \donttest{
 #' pbo_cola_offsets = PBO_get_offsets(station_name = "COLA")
 #' pbo_cola_offsets
 #'}
