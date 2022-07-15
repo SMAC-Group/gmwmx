@@ -16,7 +16,7 @@ A \code{vector} specifying the offsets of a PBO station.
 Extract offsets for a PBO station
 }
 \examples{
-\donttest{
+\dontrun{
 pbo_cola_offsets = PBO_get_offsets(station_name = "COLA")
 pbo_cola_offsets
 }

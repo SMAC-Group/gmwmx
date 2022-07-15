@@ -22,7 +22,7 @@ A \code{gnssts} object that contains the data associated with the specified PBO 
 Load station data from PBO
 }
 \examples{
-\donttest{
+\dontrun{
 pbo_cola_data = PBO_get_station("COLA", column="dE")
 str(pbo_cola_data)
 }
