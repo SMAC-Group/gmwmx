@@ -33,7 +33,7 @@ get_file_with_cache <- function(url) {
 #' @importFrom utils read.table
 #' @export
 #' @examples 
-#' \donttest{
+#' \dontrun{
 #' pbo_cola_data = PBO_get_station("COLA", column="dE")
 #' str(pbo_cola_data)
 #'}
@@ -84,7 +84,7 @@ PBO_get_station <- function(station_name, column, time_range = c(-Inf, Inf), sca
 #' @param station_name A \code{string} specifying the PBO station name.
 #' @return A \code{vector} specifying the offsets of a PBO station.
 #' @examples 
-#' \donttest{
+#' \dontrun{
 #' pbo_cola_offsets = PBO_get_offsets(station_name = "COLA")
 #' pbo_cola_offsets
 #'}
