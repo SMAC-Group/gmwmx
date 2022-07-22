@@ -1,7 +1,3 @@
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-
 <!-- badges: start -->
 ![example workflow](https://github.com/SMAC-Group/gmwmx/actions/workflows/R-CMD-check.yaml/badge.svg)
 ![](https://img.shields.io/github/last-commit/SMAC-Group/gmwmx) 
@@ -50,9 +46,15 @@ For Linux users that are on distributions supported by `Hector`, this can be eas
 3) Adding this folder to the system-wide `PATH` environment variable by modifying `/etc/environment`.
 4) Ensuring that the corresponding folder is accessible by `R` with  `Sys.getenv("PATH")` after running the script and reassigning the new `PATH` to the `PATH` environment variable with `. /etc/environment` or equivalently with `source /etc/environment`.
 
+```
+> Sys.getenv("PATH")
+[1] "$HOME/app/hector/bin:..."
+
+```
+
 ### External `R` libraries
 
-The `gmwmx` package relies on a limited number of external libraries, but notably on `Rcpp` and `RcppArmadillo` which require a `C++` compiler for installation and on the `R` package `infuser` which is not available on `CRAN` and has to be installed directly from its [GitHub repo](https://github.com/Bart6114/infuser) following the provided instructions.
+The `gmwmx` package relies on a limited number of external libraries, but notably on `Rcpp` and `RcppArmadillo` which require a `C++` compiler for installation, such as for example `gcc`.
 
 ## License
 
