@@ -47,7 +47,14 @@ fit_base = function(theta_0, wv_emph, model_string, maxit=1e6, method=NULL) {
 #' @param jumps A \code{vector} specifying the time at which there is a mean shift of the time series. Should be specified to \code{NULL} if there is not presence of offsets in the signal.
 #' @param n_seasonal An \code{integer} specifying the number of sinusoidal signals in the time series.
 #' @export 
-#'
+#' @examples
+#' n= 10*365
+#' jump_vec <- c(200, 300, 500)
+#' nbr_sin = 2
+#' A <- create_A_matrix(1:n, jump_vec, n_seasonal = nbr_sin)
+#' head(A)
+#' A <- create_A_matrix(1:n, jumps = NULL, n_seasonal = nbr_sin)
+#' head(A)
 #' @return Matrix A in order to compute the functional component of the model in a linear fashion 
 create_A_matrix = function(t_nogap, jumps, n_seasonal) {
   

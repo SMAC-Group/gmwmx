@@ -92,6 +92,15 @@
     <p>Matrix A in order to compute the functional component of the model in a linear fashion</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">n</span><span class="op">=</span> <span class="fl">10</span><span class="op">*</span><span class="fl">365</span></span>
+<span class="r-in"><span class="va">jump_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">300</span>, <span class="fl">500</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">nbr_sin</span> <span class="op">=</span> <span class="fl">2</span></span>
+<span class="r-in"><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu">create_A_matrix</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="va">jump_vec</span>, n_seasonal <span class="op">=</span> <span class="va">nbr_sin</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu">create_A_matrix</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, jumps <span class="op">=</span> <span class="cn">NULL</span>, n_seasonal <span class="op">=</span> <span class="va">nbr_sin</span><span class="op">)</span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

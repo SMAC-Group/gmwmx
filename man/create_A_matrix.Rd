@@ -19,3 +19,12 @@ Matrix A in order to compute the functional component of the model in a linear f
 \description{
 Define matrix A of the functional model
 }
+\examples{
+n= 10*365
+jump_vec <- c(200, 300, 500)
+nbr_sin = 2
+A <- create_A_matrix(1:n, jump_vec, n_seasonal = nbr_sin)
+head(A)
+A <- create_A_matrix(1:n, jumps = NULL, n_seasonal = nbr_sin)
+head(A)
+}
