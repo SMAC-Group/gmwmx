@@ -98,7 +98,23 @@
 <span class="r-in"><span class="va">jump_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">300</span>, <span class="fl">500</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">nbr_sin</span> <span class="op">=</span> <span class="fl">2</span></span>
 <span class="r-in"><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu">create_A_matrix</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="va">jump_vec</span>, n_seasonal <span class="op">=</span> <span class="va">nbr_sin</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]    [,2]       [,3]      [,4]       [,5]       [,6] [,7] [,8] [,9]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    1 -1824.5 -0.6708865 0.7415600 -0.9950053 0.09982256    0    0    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    1 -1823.5 -0.6580313 0.7529906 -0.9909827 0.13398974    0    0    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]    1 -1822.5 -0.6449813 0.7641984 -0.9857873 0.16799833    0    0    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]    1 -1821.5 -0.6317404 0.7751800 -0.9794251 0.20180808    0    0    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5,]    1 -1820.5 -0.6183126 0.7859322 -0.9719037 0.23537897    0    0    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6,]    1 -1819.5 -0.6047019 0.7964519 -0.9632319 0.26867128    0    0    0</span>
 <span class="r-in"><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu">create_A_matrix</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, jumps <span class="op">=</span> <span class="cn">NULL</span>, n_seasonal <span class="op">=</span> <span class="va">nbr_sin</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]    [,2]       [,3]      [,4]       [,5]       [,6]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    1 -1824.5 -0.6708865 0.7415600 -0.9950053 0.09982256</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    1 -1823.5 -0.6580313 0.7529906 -0.9909827 0.13398974</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]    1 -1822.5 -0.6449813 0.7641984 -0.9857873 0.16799833</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]    1 -1821.5 -0.6317404 0.7751800 -0.9794251 0.20180808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5,]    1 -1820.5 -0.6183126 0.7859322 -0.9719037 0.23537897</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6,]    1 -1819.5 -0.6047019 0.7964519 -0.9632319 0.26867128</span>
 </code></pre></div>
     </div>
   </div>

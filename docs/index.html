@@ -138,11 +138,14 @@
 <li>Adding this folder to the system-wide <code>PATH</code> environment variable by modifying <code>/etc/environment</code>.</li>
 <li>Ensuring that the corresponding folder is accessible by <code>R</code> with <code>Sys.getenv("PATH")</code> after running the script and reassigning the new <code>PATH</code> to the <code>PATH</code> environment variable with <code>. /etc/environment</code> or equivalently with <code>source /etc/environment</code>.</li>
 </ol>
+<pre><code>&gt; Sys.getenv("PATH")
+[1] "$HOME/app/hector/bin:..."
+</code></pre>
 </div>
 <div class="section level3">
 <h3 id="external-r-libraries">External <code>R</code> libraries<a class="anchor" aria-label="anchor" href="#external-r-libraries"></a>
 </h3>
-<p>The <code>gmwmx</code> package relies on a limited number of external libraries, but notably on <code>Rcpp</code> and <code>RcppArmadillo</code> which require a <code>C++</code> compiler for installation and on the <code>R</code> package <code>infuser</code> which is not available on <code>CRAN</code> and has to be installed directly from its <a href="https://github.com/Bart6114/infuser" class="external-link">GitHub repo</a> following the provided instructions.</p>
+<p>The <code>gmwmx</code> package relies on a limited number of external libraries, but notably on <code>Rcpp</code> and <code>RcppArmadillo</code> which require a <code>C++</code> compiler for installation, such as for example <code>gcc</code>.</p>
 </div>
 </div>
 <div class="section level2">

@@ -21,3 +21,24 @@ A \code{gnssts} object.
 \description{
 Create a gnssts object
 }
+\examples{
+phase <- 0.45
+amplitude <- 2.5
+sigma2_wn <- 15
+bias <- 0
+trend <- 5 / 365.25
+cosU <- amplitude * cos(phase)
+sinU <- amplitude * sin(phase)
+year <- 5
+n <- year * 365
+jump_vec <- c(200, 300, 500)
+jump_height <- c(10, 15, 20)
+nbr_sin <- 1 
+A <- create_A_matrix(1:n, jump_vec, n_seasonal = nbr_sin)
+x_0 <- c(bias, trend, cosU, sinU, jump_height)
+eps <- rnorm(n = n, sd = sqrt(sigma2_wn))
+yy <- A \%*\% x_0 + eps
+gnssts_obj <- create.gnssts(t = 1:length(yy), y = yy, jumps = jump_vec)
+str(gnssts_obj)
+
+}

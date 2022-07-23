@@ -7,6 +7,27 @@
 #' @return A \code{gnssts} object.
 #' @importFrom utils tail
 #' @export
+#' 
+#' @examples 
+#' phase <- 0.45
+#' amplitude <- 2.5
+#' sigma2_wn <- 15
+#' bias <- 0
+#' trend <- 5 / 365.25
+#' cosU <- amplitude * cos(phase)
+#' sinU <- amplitude * sin(phase)
+#' year <- 5
+#' n <- year * 365
+#' jump_vec <- c(200, 300, 500)
+#' jump_height <- c(10, 15, 20)
+#' nbr_sin <- 1 
+#' A <- create_A_matrix(1:n, jump_vec, n_seasonal = nbr_sin)
+#' x_0 <- c(bias, trend, cosU, sinU, jump_height)
+#' eps <- rnorm(n = n, sd = sqrt(sigma2_wn))
+#' yy <- A %*% x_0 + eps
+#' gnssts_obj <- create.gnssts(t = 1:length(yy), y = yy, jumps = jump_vec)
+#' str(gnssts_obj)
+#' 
 create.gnssts = function(t, y, jumps = NULL, sampling_period = 1) {
   
   # TODO: add further consistency checks
@@ -48,6 +69,28 @@ create.gnssts = function(t, y, jumps = NULL, sampling_period = 1) {
 #' @return No return value. Write a \code{gnssts} object in a .mom file by default. 
 #' @importFrom utils write.table
 #' @export
+#' @examples 
+#' phase <- 0.45
+#' amplitude <- 2.5
+#' sigma2_wn <- 15
+#' bias <- 0
+#' trend <- 5 / 365.25
+#' cosU <- amplitude * cos(phase)
+#' sinU <- amplitude * sin(phase)
+#' year <- 5
+#' n <- year * 365
+#' jump_vec <- c(200, 300, 500)
+#' jump_height <- c(10, 15, 20)
+#' nbr_sin <- 1
+#' A <- create_A_matrix(1:n, jump_vec, n_seasonal = nbr_sin)
+#' x_0 <- c(bias, trend, cosU, sinU, jump_height)
+#' eps <- rnorm(n = n, sd = sqrt(sigma2_wn))
+#' yy <- A %*% x_0 + eps
+#' gnssts_obj <- create.gnssts(t = 1:length(yy), y = yy, jumps = jump_vec)
+#' str(gnssts_obj)
+#' \dontrun{
+#' write.gnssts(x = gnssts_obj, filename = "test.mom")
+#' }
 write.gnssts = function(x, filename, format = "mom") {
   
   if (! ("gnssts" %in% class(x)) ) {
@@ -96,6 +139,29 @@ write.gnssts = function(x, filename, format = "mom") {
 #' @importFrom utils read.table
 #' @importFrom stringi stri_match_first
 #' @export
+#' @examples 
+#' phase <- 0.45
+#' amplitude <- 2.5
+#' sigma2_wn <- 15
+#' bias <- 0
+#' trend <- 5 / 365.25
+#' cosU <- amplitude * cos(phase)
+#' sinU <- amplitude * sin(phase)
+#' year <- 5
+#' n <- year * 365
+#' jump_vec <- c(200, 300, 500)
+#' jump_height <- c(10, 15, 20)
+#' nbr_sin <- 1
+#' A <- create_A_matrix(1:n, jump_vec, n_seasonal = nbr_sin)
+#' x_0 <- c(bias, trend, cosU, sinU, jump_height)
+#' eps <- rnorm(n = n, sd = sqrt(sigma2_wn))
+#' yy <- A %*% x_0 + eps
+#' gnssts_obj <- create.gnssts(t = 1:length(yy), y = yy, jumps = jump_vec)
+#' str(gnssts_obj)
+#' \dontrun{
+#' write.gnssts(x = gnssts_obj, filename = "test.mom")
+#' gnssts_obj <-read.gnssts(filename = "test.mom", format = "mom")
+#' }
 read.gnssts = function(filename, format = "mom") {
   if (format == "mom") {
     raw = read.table(file = filename, header = FALSE, comment.char = "#")
