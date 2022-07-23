@@ -103,6 +103,35 @@
 <p>A <code>gnssts</code> object.</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">phase</span> <span class="op">&lt;-</span> <span class="fl">0.45</span></span></span>
+<span class="r-in"><span><span class="va">amplitude</span> <span class="op">&lt;-</span> <span class="fl">2.5</span></span></span>
+<span class="r-in"><span><span class="va">sigma2_wn</span> <span class="op">&lt;-</span> <span class="fl">15</span></span></span>
+<span class="r-in"><span><span class="va">bias</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
+<span class="r-in"><span><span class="va">trend</span> <span class="op">&lt;-</span> <span class="fl">5</span> <span class="op">/</span> <span class="fl">365.25</span></span></span>
+<span class="r-in"><span><span class="va">cosU</span> <span class="op">&lt;-</span> <span class="va">amplitude</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sinU</span> <span class="op">&lt;-</span> <span class="va">amplitude</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fl">5</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="va">year</span> <span class="op">*</span> <span class="fl">365</span></span></span>
+<span class="r-in"><span><span class="va">jump_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">300</span>, <span class="fl">500</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">jump_height</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">nbr_sin</span> <span class="op">&lt;-</span> <span class="fl">1</span> </span></span>
+<span class="r-in"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="create_A_matrix.html">create_A_matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="va">jump_vec</span>, n_seasonal <span class="op">=</span> <span class="va">nbr_sin</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x_0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">bias</span>, <span class="va">trend</span>, <span class="va">cosU</span>, <span class="va">sinU</span>, <span class="va">jump_height</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">eps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">sigma2_wn</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">yy</span> <span class="op">&lt;-</span> <span class="va">A</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">x_0</span> <span class="op">+</span> <span class="va">eps</span></span></span>
+<span class="r-in"><span><span class="va">gnssts_obj</span> <span class="op">&lt;-</span> <span class="fu">create.gnssts</span><span class="op">(</span>t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">yy</span>, jumps <span class="op">=</span> <span class="va">jump_vec</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">gnssts_obj</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ t              : num [1:1825] 1 2 3 4 5 6 7 8 9 10 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ y              : num [1:1825] -16.57 -8.58 -10.54 -5.64 -9.2 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ jumps          : num [1:3] 200 300 500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sampling_period: num 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr "gnssts"</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
