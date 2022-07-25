@@ -94,6 +94,44 @@
     <p>A <code>gnssts</code> object.</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">phase</span> <span class="op">=</span>     <span class="fl">0.45</span></span>
+<span class="r-in"><span class="va">amplitude</span> <span class="op">=</span> <span class="fl">2.5</span></span>
+<span class="r-in"><span class="va">sigma2_wn</span> <span class="op">=</span>       <span class="fl">15</span></span>
+<span class="r-in"><span class="va">bias</span> <span class="op">=</span>            <span class="fl">0</span></span>
+<span class="r-in"><span class="va">trend</span> <span class="op">=</span>           <span class="fl">5</span><span class="op">/</span><span class="fl">365.25</span></span>
+<span class="r-in"><span class="va">cosU</span> <span class="op">=</span>            <span class="va">amplitude</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">sinU</span> <span class="op">=</span>            <span class="va">amplitude</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">n</span><span class="op">=</span> <span class="fl">2</span><span class="op">*</span><span class="fl">365</span></span>
+<span class="r-in"><span class="co"># define time at which there are jumps</span></span>
+<span class="r-in"><span class="va">jump_vec</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">200</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">jump_height</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span></span>
+<span class="r-in"><span class="co"># generate residuals</span></span>
+<span class="r-in"><span class="va">eps</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">sigma2_wn</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="co"># add trend, gaps and sin</span></span>
+<span class="r-in"><span class="va">A</span> <span class="op">=</span> <span class="fu"><a href="create_A_matrix.html">create_A_matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">eps</span><span class="op">)</span>, <span class="va">jump_vec</span>, n_seasonal <span class="op">=</span>  <span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span class="co"># define beta</span></span>
+<span class="r-in"><span class="va">x_0</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">bias</span>, <span class="va">trend</span>, <span class="va">jump_height</span>,  <span class="va">cosU</span>,  <span class="va">sinU</span><span class="op">)</span></span>
+<span class="r-in"><span class="co"># create time series</span></span>
+<span class="r-in"><span class="va">yy</span> <span class="op">=</span> <span class="va">A</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">x_0</span> <span class="op">+</span> <span class="va">eps</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">yy</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span>
+<span class="r-plt img"><img src="remove_outliers_hector-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="va">n_outliers</span> <span class="op">=</span> <span class="fl">30</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">id_outliers</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">150</span><span class="op">:</span><span class="fl">350</span>, size <span class="op">=</span> <span class="va">n_outliers</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">val_outliers</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_outliers</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span><span class="op">+</span><span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">yy</span><span class="op">[</span><span class="va">id_outliers</span><span class="op">]</span> <span class="op">=</span> <span class="va">val_outliers</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">yy</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span>
+<span class="r-plt img"><img src="remove_outliers_hector-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co"># save signal in temp</span></span>
+<span class="r-in"><span class="va">gnssts_obj</span> <span class="op">=</span> <span class="fu"><a href="create.gnssts.html">create.gnssts</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">yy</span>, jumps <span class="op">=</span> <span class="va">jump_vec</span><span class="op">)</span></span>
+<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="va">clean_yy</span> <span class="op">=</span> <span class="fu">remove_outliers_hector</span><span class="op">(</span>x<span class="op">=</span><span class="va">gnssts_obj</span>, n_seasonal <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">clean_yy</span><span class="op">$</span><span class="va">t</span>, <span class="va">clean_yy</span><span class="op">$</span><span class="va">y</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">}</span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

@@ -102,9 +102,19 @@ load(file_path_clean_yy_remove_outliers_hector)
 ```
 
 We can compare the original and the signal with detected extreme values removed from the signal:
+
+```{r, echo=F}
+oldpar <- par(no.readonly = TRUE) 
+```
+
+
 ```{r}
 par(mfrow=c(1,2))
 plot(yy)
 plot(clean_yy$t, clean_yy$y, type = "l", xlab="Time", ylab = "Observation")
+```
+
+```{r, echo=F}
+par(oldpar)
 ```
 

@@ -94,6 +94,18 @@
     <p>A <code>gnsstsmodel</code> object.</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="va">cola</span> <span class="op">=</span> <span class="fu"><a href="PBO_get_station.html">PBO_get_station</a></span><span class="op">(</span>station_name <span class="op">=</span> <span class="st">"COLA"</span>, column <span class="op">=</span> <span class="st">"dE"</span>, time_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">51130</span>, <span class="fl">52000</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">fit_mle</span> <span class="op">=</span> <span class="fu">estimate_hector</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cola</span>,</span>
+<span class="r-in">                          n_seasonal <span class="op">=</span> <span class="fl">1</span>, </span>
+<span class="r-in">                          model_string <span class="op">=</span> <span class="st">"wn+matern"</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

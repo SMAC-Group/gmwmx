@@ -21,3 +21,37 @@ A \code{gnssts} object.
 \description{
 Remove outliers from a gnssts object using Hector
 }
+\examples{
+phase =     0.45
+amplitude = 2.5
+sigma2_wn =       15
+bias =            0
+trend =           5/365.25
+cosU =            amplitude*cos(phase)
+sinU =            amplitude*sin(phase)
+n= 2*365
+# define time at which there are jumps
+jump_vec =  c(100, 200)
+jump_height = c(10, 20)
+# generate residuals
+eps = rnorm(n = n, sd = sqrt(sigma2_wn))
+# add trend, gaps and sin
+A = create_A_matrix(1:length(eps), jump_vec, n_seasonal =  1)
+# define beta
+x_0 = c(bias, trend, jump_height,  cosU,  sinU)
+# create time series
+yy = A \%*\% x_0 + eps
+plot(yy, type="l")
+n_outliers = 30
+set.seed(123)
+id_outliers=sample(150:350, size = n_outliers)
+val_outliers = rnorm(n = n_outliers, mean = max(yy)+10, sd = 5)
+yy[id_outliers] = val_outliers
+plot(yy, type="l")
+# save signal in temp
+gnssts_obj = create.gnssts(t = 1:length(yy), y = yy, jumps = jump_vec)
+\dontrun{
+clean_yy = remove_outliers_hector(x=gnssts_obj, n_seasonal = 1)
+plot(clean_yy$t, clean_yy$y, type="l")
+}
+}

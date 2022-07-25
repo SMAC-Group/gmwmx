@@ -107,6 +107,14 @@ powmat_non_int = function(mat, power){
 #' @importFrom wv wvar
 #' 
 #' @export
+#' 
+#' @examples 
+#' data(cola)
+#' fit_gmwmx = estimate_gmwmx(x = cola,
+#'                            theta_0 = c(0.1,0.1,0.1,0.1), 
+#'                            n_seasonal = 1, 
+#'                            model_string = "wn+matern")
+#' 
 estimate_gmwmx <- function(
   x,
   theta_0, 

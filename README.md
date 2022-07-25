@@ -35,7 +35,7 @@ devtools::install_github("SMAC-Group/gmwmx", build_vignettes = TRUE)
 ## External dependencies
 
 ### `Hector`
-In order to runs successfully functions that execute `Hector`, we assume that `Hector` is installed and available in the `PATH` of the installation where these functions are called. More precisely, when running either `estimate_hector()` or `remove_outliers_hector()`, we assume that `Hector`'s binaries executables `estimatetrend`, `date2mjd` and `removeoutliers` are compiled and located in a folder available in the `PATH`.
+In order to runs successfully functions that execute `Hector`, we assume that `Hector` is installed and available in the `PATH` of the installation where these functions are called. More precisely, when running either `estimate_hector()`, `remove_outliers_hector()`, `PBO_get_station()` or `PBO_get_offsets()`, we assume that `Hector`'s binaries executable `estimatetrend`, `removeoutliers` and `date2mjd` are located in a folder available in the `PATH` by `R`.
 
 In order to make sure that these functions are available in the `PATH`, you can run `Sys.getenv("PATH")` and ensure that the directory that contains the executable binaries of `Hector` is listed in the `PATH`.
 

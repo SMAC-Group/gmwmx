@@ -21,3 +21,13 @@ A \code{gnsstsmodel} object.
 \description{
 Estimate a stochastic model based on the MLE and the Hector implementation.
 }
+\examples{
+\dontrun{
+cola = PBO_get_station(station_name = "COLA", column = "dE", time_range = c(51130, 52000))
+fit_mle = estimate_hector(x = cola,
+                          n_seasonal = 1, 
+                          model_string = "wn+matern")
+
+}
+
+}

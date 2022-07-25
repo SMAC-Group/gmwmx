@@ -7,6 +7,18 @@
 #' @param x_unit A \code{string} specifying the x axis label.
 #' @return No return value. Produce a plot comparing two estimated models.
 #' @export
+#' 
+#' @examples 
+#' data(cola)
+#' fit_gmwmx_1 = estimate_gmwmx(x = cola,
+#'                              theta_0 = c(0.1,0.1,0.1,0.1), 
+#'                              n_seasonal = 1, 
+#'                              model_string = "wn+matern")
+#' fit_gmwmx_2 = estimate_gmwmx(x = cola,
+#'                              theta_0 = c(0.1,0.1,0.1), 
+#'                              n_seasonal = 1, 
+#'                              model_string = "wn+powerlaw")
+#' compare_fits(fit_gmwmx_1, fit_gmwmx_2)
 compare_fits <- function(fit_1, fit_2,   
                          main = NULL,
                          y_unit = "mm",
@@ -24,7 +36,8 @@ compare_fits <- function(fit_1, fit_2,
   
   # store original plot conf
   oldpar <- par(no.readonly = TRUE)
-  oldpar = oldpar[!(names(oldpar) %in% c("pin", "cin", "cra", "csi", "cxy", "din", "page"))]
+  on.exit(par(oldpar)) 
+  # oldpar = oldpar[!(names(oldpar) %in% c("pin", "cin", "cra", "csi", "cxy", "din", "page"))]
   
   
   # define layout matrix
@@ -90,9 +103,7 @@ compare_fits <- function(fit_1, fit_2,
     plot_ig = F
   )
   
-  # restore the original plot conf
-  par(oldpar)
-  
+
   
 }
 

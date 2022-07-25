@@ -33,6 +33,10 @@ reference:
   - title: Hector utilities
     contents:
     - remove_outliers_hector
+  - title: Data
+    contents:
+    - cola
+
 
 navbar:
   left:

@@ -100,6 +100,14 @@ plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_i
 #' @export
 #' @importFrom grDevices hcl
 #' @importFrom graphics abline axis layout legend lines mtext par points polygon rect text
+#' 
+#' @examples 
+#' data(cola)
+#' fit_gmwmx = estimate_gmwmx(x = cola,
+#'                            theta_0 = c(0.1,0.1,0.1,0.1), 
+#'                            n_seasonal = 1, 
+#'                            model_string = "wn+matern")
+#' plot(fit_gmwmx)
 plot.gnsstsmodel <- function(
   x, 
   main = NULL, 
@@ -113,7 +121,8 @@ plot.gnsstsmodel <- function(
 
   # store original plot conf
   oldpar <- par(no.readonly = TRUE)
-  oldpar = oldpar[!(names(oldpar) %in% c("pin", "cin", "cra", "csi", "cxy", "din", "page"))]
+  on.exit(par(oldpar)) 
+  # oldpar = oldpar[!(names(oldpar) %in% c("pin", "cin", "cra", "csi", "cxy", "din", "page"))]
   
   # define parameters plotting
   par(mfrow=c(2,1))
@@ -205,8 +214,7 @@ plot.gnsstsmodel <- function(
     # theta_0 = theta_0
   )
   
-  # restore the original plot conf
-  par(oldpar)
+
 }
 
 

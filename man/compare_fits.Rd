@@ -23,3 +23,15 @@ No return value. Produce a plot comparing two estimated models.
 \description{
 Compare graphically two \code{gnsstsmodel} objects.
 }
+\examples{
+data(cola)
+fit_gmwmx_1 = estimate_gmwmx(x = cola,
+                             theta_0 = c(0.1,0.1,0.1,0.1), 
+                             n_seasonal = 1, 
+                             model_string = "wn+matern")
+fit_gmwmx_2 = estimate_gmwmx(x = cola,
+                             theta_0 = c(0.1,0.1,0.1), 
+                             n_seasonal = 1, 
+                             model_string = "wn+powerlaw")
+compare_fits(fit_gmwmx_1, fit_gmwmx_2)
+}

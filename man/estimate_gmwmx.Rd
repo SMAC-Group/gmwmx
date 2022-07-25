@@ -38,3 +38,11 @@ A \code{gnsstsmodel} object.
 \description{
 Estimate a stochastic model in a two-steps procedure using the GMWMX estimator.
 }
+\examples{
+data(cola)
+fit_gmwmx = estimate_gmwmx(x = cola,
+                           theta_0 = c(0.1,0.1,0.1,0.1), 
+                           n_seasonal = 1, 
+                           model_string = "wn+matern")
+
+}

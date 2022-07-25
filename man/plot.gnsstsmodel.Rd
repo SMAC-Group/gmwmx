@@ -35,3 +35,11 @@ No return value. Plot a \code{gnsstsmodel} object.
 \description{
 Plotting method for a \code{gnsstsmodel} object.
 }
+\examples{
+data(cola)
+fit_gmwmx = estimate_gmwmx(x = cola,
+                           theta_0 = c(0.1,0.1,0.1,0.1), 
+                           n_seasonal = 1, 
+                           model_string = "wn+matern")
+plot(fit_gmwmx)
+}
