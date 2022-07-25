@@ -81,7 +81,10 @@ estimate_hector <- function(
     model_string,
     cleanup = TRUE
 ) {
+  
 
+  
+  
   
   if (!("gnssts" %in% class(x))) {
     stop("x must be an object of type 'gnssts")
@@ -169,6 +172,9 @@ estimate_hector <- function(
   )
   
   names(beta_hat) <- c("bias", "trend", rep(c("A*cos(U)", "A*sin(U)"), n_seasonal), rep("jump", length(x$jumps)))
+  
+  # transform beta hat to vector
+  beta_hat = as.vector(unlist(beta_hat))
   
   # collect stochsatic parameters
   
