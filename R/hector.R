@@ -150,7 +150,7 @@ estimate_hector <- function(
   # run hector assuming that estimatetrend is accesible in the PATH
   cmd = sprintf("cd %s; %s '%s'", working_folder, "estimatetrend", cfg_file)
   
-  timing = system.time({out = system(cmd, intern = T)})
+  timing = system.time({out = system(cmd, intern = TRUE)})
   
   json = fromJSON(file = paste(working_folder, "estimatetrend.json", sep="/"))
   
@@ -189,7 +189,7 @@ estimate_hector <- function(
   theta_hat = gen_pick_params_hector(model, json)
   
   if (cleanup == TRUE) {
-    unlink(working_folder, recursive = T)
+    unlink(working_folder, recursive = TRUE)
   }
   
   # compute functional model, residuals and wv
@@ -300,11 +300,11 @@ remove_outliers_hector <- function(x, n_seasonal, IQ_factor = 3, cleanup = TRUE)
   # create temporary folders
   working_folder = paste(tempdir(), stri_rand_strings(n=1,length = 16), sep = "/")
   
-  if (cleanup == F) {
+  if (cleanup == FALSE) {
     message(paste("Working in", working_folder))
   }
   
-  dir.create(working_folder, showWarnings = F, recursive = T)
+  dir.create(working_folder, showWarnings = FALSE, recursive = TRUE)
   
   # store time series
   
@@ -338,7 +338,7 @@ remove_outliers_hector <- function(x, n_seasonal, IQ_factor = 3, cleanup = TRUE)
   # run hector assuming that removeoutliers is accesible in the PATH
   cmd = sprintf("cd %s; %s '%s'", working_folder, 'removeoutliers', cfg_file)
   
-  timing = system.time({out = system(cmd, intern = T)})
+  timing = system.time({out = system(cmd, intern = TRUE)})
   
   y = read.gnssts(
     filename = paste(working_folder, "ts_out.mom", sep = "/"),

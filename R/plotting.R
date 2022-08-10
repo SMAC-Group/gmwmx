@@ -4,7 +4,7 @@ gg_color_hue <- function(n, alpha) {
   hcl(h = hues, l = 65, c = 100, alpha = alpha)[1:n]
 }
 
-plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_ig=T, ci = TRUE, legend_position ="topright") {
+plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_ig=TRUE, ci = TRUE, legend_position ="topright") {
 
   if(is.null(yl)){
     yl = c(min(wv_emph$ci_low), max(wv_emph$ci_high ))
@@ -29,7 +29,7 @@ plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_i
   axis(1, at=10^p10, labels=parse(text=sprintf("10^%.0f",p10)))
   
   # add polygon ci
-  if(ci ==T){
+  if(ci ==TRUE){
     polygon(x = c(wv_emph$scales, rev(wv_emph$scales)),
             y = c(wv_emph$ci_low, rev(wv_emph$ci_high)),
             col = "#E5EBF2",
@@ -81,7 +81,7 @@ plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_i
     col = c("black", cols),
     lty  = c(1, 1, rep(1, nrow(wvs))),
     pch = c(1, NA, rep(NA, nrow(wvs))),
-    horiz = F,
+    horiz = FALSE,
     cex = 0.75, bty="n", bg="transparent"
   )
 }
@@ -210,7 +210,7 @@ plot.gnsstsmodel <- function(
     wv_emph = x$wv_residuals,
     theta_hat = x$theta_hat,
     model = x$model,
-    plot_ig = F, legend_position = legend_position_wv
+    plot_ig = FALSE, legend_position = legend_position_wv
     # theta_0 = theta_0
   )
   

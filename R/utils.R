@@ -2,7 +2,7 @@ ymdhms_to_j <- function(year, month, day, hour, minute, second) {
   
   cmd = sprintf('date2mjd %d %d %d %d %d %.6f', year, month, day, hour, minute, second)
   
-  ret = system(cmd, intern = T )
+  ret = system(cmd, intern = TRUE )
   
   as.numeric(strsplit(tail(ret,1), ":")[[1]][2])
 }

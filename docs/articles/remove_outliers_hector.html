@@ -97,7 +97,8 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Remove extreme values in a time series signal with Hector</h1>
+      <h1 data-toc-skip>Remove extreme values in a time series signal
+with Hector</h1>
             
       
       
@@ -169,10 +170,13 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># save signal in temp</span>
 <span class="va">gnssts_obj</span> <span class="op">=</span> <span class="fu"><a href="../reference/create.gnssts.html">create.gnssts</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">yy</span>, jumps <span class="op">=</span> <span class="va">jump_vec</span><span class="op">)</span></code></pre></div>
-<p>We remove extreme values from the signal using <code>removeoutliers</code> function of <code>Hector</code> available by calling <code><a href="../reference/remove_outliers_hector.html">remove_outliers_hector()</a></code></p>
+<p>We remove extreme values from the signal using
+<code>removeoutliers</code> function of <code>Hector</code> available by
+calling <code><a href="../reference/remove_outliers_hector.html">remove_outliers_hector()</a></code></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">clean_yy</span> <span class="op">=</span> <span class="fu"><a href="../reference/remove_outliers_hector.html">remove_outliers_hector</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">gnssts_obj</span>, n_seasonal <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<p>We can compare the original and the signal with detected extreme values removed from the signal:</p>
+<p>We can compare the original and the signal with detected extreme
+values removed from the signal:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span>

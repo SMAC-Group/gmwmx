@@ -120,7 +120,7 @@ write.gnssts = function(x, filename, format = "mom") {
         x$t,
         x$y
       ), 
-      file = con, row.names = F, col.names = F, append = T
+      file = con, row.names = FALSE, col.names = FALSE, append = TRUE
     )
     
     close(con)
