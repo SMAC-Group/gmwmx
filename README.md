@@ -24,8 +24,22 @@ package.
 
 ## Installation Instructions
 
-The `gmwmx` package is available only on GitHub at the moment. The latest
-version can be installed with:
+The `gmwmx` package is available on both CRAN and GitHub. The CRAN
+version is considered stable while the GitHub version is subject to
+modifications/updates which may lead to installation problems or broken
+functions. You can install the stable version of the `gmwmx` package
+with:
+
+``` r
+install.packages("gmwmx")
+```
+
+For users who are interested in having the latest developments, the
+GitHub version is ideal although more dependencies are required to run a
+stable version of the package. Most importantly, users **must** have a
+(C++) compiler installed on their machine that is compatible with R
+(e.g. `Clang`).
+
 
 ``` r
 # Install dependencies
