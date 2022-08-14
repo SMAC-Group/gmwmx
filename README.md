@@ -37,7 +37,7 @@ install.packages("gmwmx")
 For users who are interested in having the latest developments, the
 GitHub version is ideal although more dependencies are required to run a
 stable version of the package. Most importantly, users **must** have a
-(C++) compiler installed on their machine that is compatible with R
+(`C++`) compiler installed on their machine that is compatible with R
 (e.g. `Clang`).
 
 
@@ -78,7 +78,7 @@ The `gmwmx` package relies on a limited number of external libraries, but notabl
 
 ## License
 
-The license this source code is released under is the GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3.0. See the LICENSE file for full text. 
+The license this source code is released under is the GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3.0. 
 
 
 ## References
