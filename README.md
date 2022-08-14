@@ -7,8 +7,6 @@
 downloads](http://cranlogs.r-pkg.org/badges/gmwmx)](http://www.r-pkg.org/pkg/gmwmx)
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/gmwmx)](http://www.r-pkg.org/pkg/gmwmx)
-
-
 [![CRAN status](https://www.r-pkg.org/badges/version/gmwmx)](https://CRAN.R-project.org/package=gmwmx)
 <!-- badges: end -->
 
