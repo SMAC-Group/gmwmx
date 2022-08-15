@@ -81,7 +81,7 @@ The `gmwmx` package relies on a limited number of external libraries, but notabl
 
 ## License
 
-The license this source code is released under is the GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3.0. 
+This source code is released under is the GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3.0. 
 
 
 ## References
