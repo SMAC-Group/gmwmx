@@ -121,11 +121,22 @@ You can compute confidence intervals for estimated functional parameters of an e
 
 Let us consider a single sinusoidal signal with the jumps specified in the `gnssts` object and a combination of a White noise and a Power Law process for the stochastic model. 
 
-```{r}
+
+
+
+```{r, eval=F, echo=T}
 fit_dobs_wn_plp_gmwmx = estimate_gmwmx(x = data_dobs, theta_0 = c(0.1, 0.1, 0.1), 
                                        model_string = "wn+powerlaw", 
                                        n_seasonal = 1, ci = T)
+
 ```
+
+```{r, echo=F, eval=T}
+file_path = system.file("extdata", "fit_dobs_wn_plp_gmwmx.rda", package = "gmwmx", mustWork = T)
+load(file_path)
+```
+
+
 
 Estimated models are of class `gnsstsmodel`
 ```{r}
@@ -150,7 +161,11 @@ plot(fit_dobs_wn_plp_gmwmx)
 We can specify the number of iterations of the GMWMX to compute respectively the GMWMX-1 and GMWMX-2 or other iteration of the GMWMX with the argument `k_iter`. For example we can compute the GMWMX-2 as such:
 
 ```{r, eval=F, echo=T}
-fit_dobs_wn_plp_gmwmx_2 = estimate_gmwmx(x = data_dobs, theta_0 = c(0.1, 0.1, 0.1), model_string = "wn+powerlaw", n_seasonal = 1, k_iter = 2)
+fit_dobs_wn_plp_gmwmx_2 = estimate_gmwmx(x = data_dobs,
+                                         theta_0 = c(0.1, 0.1, 0.1), 
+                                         model_string = "wn+powerlaw",
+                                         n_seasonal = 1, 
+                                         k_iter = 2)
 ```
 
 
@@ -205,22 +220,58 @@ Let us consider three potential models for the stochastic model of this signal. 
 - a White noise and a PowerLaw process 
 - a White noise coupled with a Matèrn process
 - a White noise and a Fractional Gaussian noise
-```{r, fig.height=8, fig.width=6, fig.align='center', eval=T}
+
+```{r, fig.height=8, fig.width=6, fig.align='center', eval=F, echo=T}
 fit_cola_wn_plp = estimate_gmwmx(cola, model_string = "wn+powerlaw", 
                                  theta_0 = c(0.1,0.1,0.1),
                                  n_seasonal = 1, 
                                  ci = T)
-plot(fit_cola_wn_plp)
+```
 
+
+
+```{r, echo=F, eval=T}
+file_path = system.file("extdata", "fit_cola_wn_plp.rda", package = "gmwmx", mustWork = T)
+load(file_path)
+```
+
+
+
+```{r, fig.height=8, fig.width=6, fig.align='center', eval=T}
+plot(fit_cola_wn_plp)
+```
+
+
+```{r, fig.height=8, fig.width=6, fig.align='center', eval=F, echo=T}
 fit_cola_wn_fgn = estimate_gmwmx(cola, model_string = "wn+fgn", theta_0 = c(0.1,0.1,0.2),
                                                           n_seasonal = 1, 
                                                           ci = T)
-plot(fit_cola_wn_fgn)
+```
 
+```{r, echo=F, eval=T}
+file_path = system.file("extdata", "fit_cola_wn_fgn.rda", package = "gmwmx", mustWork = T)
+load(file_path)
+```
+
+```{r, fig.height=8, fig.width=6, fig.align='center', eval=T}
+plot(fit_cola_wn_fgn)
+```
+
+
+```{r, fig.height=8, fig.width=6, fig.align='center', eval=F, echo=T}
 fit_cola_wn_matern = estimate_gmwmx(cola, model_string = "wn+matern", 
                                     theta_0 = c(0.1,0.1,0.1,0.1),
-                                                          n_seasonal = 1, 
-                                                          ci = T)
+                                    n_seasonal = 1, 
+                                    ci = T)
+```
+
+
+```{r, echo=F, eval=T}
+file_path = system.file("extdata", "fit_cola_wn_matern.rda", package = "gmwmx", mustWork = T)
+load(file_path)
+```
+
+```{r, fig.height=8, fig.width=6, fig.align='center', eval=T}
 plot(fit_cola_wn_matern)
 
 ```
