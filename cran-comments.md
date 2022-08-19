@@ -35,8 +35,6 @@ All jobs pass on
 - ubuntu-latest (release)
 - windows-latest (release)
 
-see: https://github.com/SMAC-Group/gmwmx/actions/runs/2633258318
-
 
 # Downstream dependencies
 There are currently no downstream dependencies for this package.
