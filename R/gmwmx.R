@@ -207,7 +207,7 @@ estimate_gmwmx <- function(
     rsd = rsd_data
     
     # compute wavelet variance of the residuals
-    wv_rsd = wvar_missing(rsd, robust = FALSE)
+    wv_rsd = wvar_missing(rsd)
 
     # fit the stochastic model on the residuals
     theta_hat = fit_base(
@@ -254,7 +254,7 @@ estimate_gmwmx <- function(
         rsd = rsd_data
         
         # compute wavelet variance of the residuals
-        wv_rsd = wvar_missing(rsd, robust = FALSE)
+        wv_rsd = wvar_missing(rsd)
         
         # fit the stochastic model on the residuals
         theta_hat = fit_base(
