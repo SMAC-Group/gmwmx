@@ -106,7 +106,7 @@ Hence, we let $\boldsymbol{\theta}_0 = \left[\boldsymbol{{\bf x}}_0^{\rm T} \;\;
 The `gmwmx` allows to estimate parameters of a specified functional model as well as parameters of a stochastic model (i.e. $\hat{\boldsymbol{\theta}} = \left[\boldsymbol{\hat{\boldsymbol{x}}}^{T} \;\; \hat{\boldsymbol{\gamma}}^{T}\right]$) defined by a combinations of 
 
 (1) White noise (`wn`)
-(2) Matèrn process (`matern`)
+(2) Matérn process (`matern`)
 (3) Fractional Gaussian noise (`fgn`) and 
 (4) Power Law process (`powerlaw`).
 
@@ -218,7 +218,7 @@ load(cola_path)
 Let us consider three potential models for the stochastic model of this signal. More precisely let us consider:
 
 - a White noise and a PowerLaw process 
-- a White noise coupled with a Matèrn process
+- a White noise coupled with a Matérn process
 - a White noise and a Fractional Gaussian noise
 
 ```{r, fig.height=8, fig.width=6, fig.align='center', eval=F, echo=T}

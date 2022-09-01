@@ -1,6 +1,6 @@
 Package: gmwmx
 Title: Estimate Functional and Stochastic Parameters of Linear Models with Correlated Residuals
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: c(
     person("Davide Antonio", "Cucci", role = c("aut")),
     person("Lionel", "Voirol", email = "lionelvoirol@hotmail.com", role = c("aut", "cre")),
