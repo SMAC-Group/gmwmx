@@ -78,7 +78,7 @@ infuse_estimate_trend_tmp = function(data_file,
 #' @param n_seasonal An \code{integer} specifying the number of seasonal component in the time series.
 #' @param model_string A \code{string} specifying the model to be estimated.
 #' @param likelihood_method A \code{string} taking either value "FullCov" or "AmmarGrag" that specify the method for the Likelihood computation.
-#' @param cleanup  An \code{boolean} specifying if the files created by the estimation procedure should be cleaned.
+#' @param cleanup  A \code{boolean} specifying if the files created by the estimation procedure should be cleaned.
 #' @return A \code{gnsstsmodel} object.
 #' @export
 #' @importFrom rjson fromJSON
@@ -244,7 +244,7 @@ estimate_hector <- function(
 #' 
 #' @param x A \code{gnssts} object
 #' @param n_seasonal An \code{integer} specifying the number of seasonal component in the time series.
-#' @param IQ_factor the \code{IQ_factor} parameter in hector removeoutliers.ctl
+#' @param IQ_factor A \code{double} specifying the number used to scale the interquartile range and corresponding to the argument \code{IQ_factor} in Hector removeoutliers.ctl
 #' @param cleanup  An \code{boolean} specifying if temporary files should be cleaned.
 #' @return A \code{gnssts} object.
 #' @export

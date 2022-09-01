@@ -11,7 +11,7 @@ remove_outliers_hector(x, n_seasonal, IQ_factor = 3, cleanup = TRUE)
 
 \item{n_seasonal}{An \code{integer} specifying the number of seasonal component in the time series.}
 
-\item{IQ_factor}{the \code{IQ_factor} parameter in hector removeoutliers.ctl}
+\item{IQ_factor}{A \code{double} specifying the number used to scale the interquartile range and corresponding to the argument \code{IQ_factor} in Hector removeoutliers.ctl}
 
 \item{cleanup}{An \code{boolean} specifying if temporary files should be cleaned.}
 }

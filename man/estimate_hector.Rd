@@ -21,7 +21,7 @@ estimate_hector(
 
 \item{likelihood_method}{A \code{string} taking either value "FullCov" or "AmmarGrag" that specify the method for the Likelihood computation.}
 
-\item{cleanup}{An \code{boolean} specifying if the files created by the estimation procedure should be cleaned.}
+\item{cleanup}{A \code{boolean} specifying if the files created by the estimation procedure should be cleaned.}
 }
 \value{
 A \code{gnsstsmodel} object.
