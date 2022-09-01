@@ -168,11 +168,14 @@ estimate_gmwmx <- function(
   k_iter = 1
   ) {
 
-
-
   # check that the provided object is a gnssts object
   if (!("gnssts" %in% class(x))) {
     stop("x must be an object of type 'gnssts'")
+  }
+  
+  # check that k_iter is a numeric value with value either 1 or 2
+  if(! k_iter %in% c(1,2) || !is.numeric(k_iter)){
+    stop("Incorrect provided argument k_iter. Argument k_iter should be either the numeric value 1 or 2. Default value if 1.")
   }
   
   model = create_model_descriptor(model_string)
