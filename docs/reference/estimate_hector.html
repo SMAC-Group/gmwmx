@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gmwmx</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -75,7 +75,13 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">estimate_hector</span><span class="op">(</span><span class="va">x</span>, n_seasonal <span class="op">=</span> <span class="fl">1</span>, <span class="va">model_string</span>, cleanup <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">estimate_hector</span><span class="op">(</span>
+  <span class="va">x</span>,
+  n_seasonal <span class="op">=</span> <span class="fl">1</span>,
+  <span class="va">model_string</span>,
+  likelihood_method <span class="op">=</span> <span class="st">"AmmarGrag"</span>,
+  cleanup <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -86,8 +92,10 @@
 <dd><p>An <code>integer</code> specifying the number of seasonal component in the time series.</p></dd>
 <dt>model_string</dt>
 <dd><p>A <code>string</code> specifying the model to be estimated.</p></dd>
+<dt>likelihood_method</dt>
+<dd><p>A <code>string</code> taking either value "FullCov" or "AmmarGrag" that specify the method for the Likelihood computation.</p></dd>
 <dt>cleanup</dt>
-<dd><p>An <code>boolean</code> specifying if the files created by the estimation procedure should be cleaned.</p></dd>
+<dd><p>A <code>boolean</code> specifying if the files created by the estimation procedure should be cleaned.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>

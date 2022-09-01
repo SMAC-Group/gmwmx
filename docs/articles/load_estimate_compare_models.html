@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gmwmx</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -226,7 +226,7 @@ functional model as well as parameters of a stochastic model (i.e. <span class=
 of</p>
 <ol style="list-style-type: decimal">
 <li>White noise (<code>wn</code>)</li>
-<li>Matèrn process (<code>matern</code>)</li>
+<li>Matérn process (<code>matern</code>)</li>
 <li>Fractional Gaussian noise (<code>fgn</code>) and</li>
 <li>Power Law process (<code>powerlaw</code>).</li>
 </ol>
@@ -266,15 +266,15 @@ a Power Law process for the stochastic model.</p>
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fit_dobs_wn_plp_gmwmx</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## GNSS time series model</span>
 <span class="co">## </span>
-<span class="co">##  * Model:  </span>
+<span class="co">##  * Model: wn + powerlaw </span>
 <span class="co">## </span>
 <span class="co">##  * Functional parameters:</span>
-<span class="co">##      bias                           :     +0.01201297 +/- 0.020</span>
-<span class="co">##      trend                          :     +0.00000835 +/- 0.000</span>
-<span class="co">##      A*cos(U)                       :     -0.00065540 +/- 0.000</span>
-<span class="co">##      A*sin(U)                       :     +0.00001579 +/- 0.000</span>
-<span class="co">##      jump                           :     -0.00375807 +/- 0.001</span>
-<span class="co">##      jump                           :     +0.00156788 +/- 0.001</span>
+<span class="co">##      bias                 :  +0.012013 +/- 0.020</span>
+<span class="co">##      trend                :  +0.000008 +/- 0.000</span>
+<span class="co">##      A*cos(U)             :  -0.000655 +/- 0.000</span>
+<span class="co">##      A*sin(U)             :  +0.000016 +/- 0.000</span>
+<span class="co">##      jump                 :  -0.003758 +/- 0.001</span>
+<span class="co">##      jump                 :  +0.001568 +/- 0.001</span>
 <span class="co">## </span>
 <span class="co">##  * Stochastc parameters:</span>
 <span class="co">##      wn_sigma2                      :     +0.00000079</span>
@@ -353,7 +353,7 @@ Boundary Observatory (PBO)</a> as <code>gnssts</code> object with
 this signal. More precisely let us consider:</p>
 <ul>
 <li>a White noise and a PowerLaw process</li>
-<li>a White noise coupled with a Matèrn process</li>
+<li>a White noise coupled with a Matérn process</li>
 <li>a White noise and a Fractional Gaussian noise</li>
 </ul>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">

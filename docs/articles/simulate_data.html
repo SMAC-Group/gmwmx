@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gmwmx</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -224,22 +224,22 @@ structure:</p>
 <span class="va">fit_gmwmx</span>
 <span class="co">#&gt; GNSS time series model</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;  * Model:  </span>
+<span class="co">#&gt;  * Model: wn + powerlaw </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Functional parameters:</span>
-<span class="co">#&gt;      bias                           :     +0.77852038</span>
-<span class="co">#&gt;      trend                          :     +0.01580355</span>
-<span class="co">#&gt;      A*cos(U)                       :     +2.36646389</span>
-<span class="co">#&gt;      A*sin(U)                       :     +1.95820353</span>
-<span class="co">#&gt;      jump                           :    +20.06161977</span>
-<span class="co">#&gt;      jump                           :    +30.59608513</span>
+<span class="co">#&gt;      bias                 :  +0.778520</span>
+<span class="co">#&gt;      trend                :  +0.015804</span>
+<span class="co">#&gt;      A*cos(U)             :  +2.366464</span>
+<span class="co">#&gt;      A*sin(U)             :  +1.958204</span>
+<span class="co">#&gt;      jump                 : +20.061620</span>
+<span class="co">#&gt;      jump                 : +30.596085</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Stochastc parameters:</span>
-<span class="co">#&gt;      wn_sigma2                      :    +12.23377791</span>
-<span class="co">#&gt;      powerlaw_sigma2                :    +11.45841384</span>
-<span class="co">#&gt;      powerlaw_d                     :     +0.34904886</span>
+<span class="co">#&gt;      wn_sigma2                      :    +11.80775096</span>
+<span class="co">#&gt;      powerlaw_sigma2                :    +11.93347935</span>
+<span class="co">#&gt;      powerlaw_d                     :     +0.34017417</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;  * Estimation time: 0.25 s</span>
+<span class="co">#&gt;  * Estimation time: 0.22 s</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_gmwmx</span><span class="op">)</span></code></pre></div>
 <p><img src="simulate_data_files/figure-html/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
@@ -252,22 +252,22 @@ structure:</p>
 <span class="va">fit_gmwmx_2</span>
 <span class="co">#&gt; GNSS time series model</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;  * Model:  </span>
+<span class="co">#&gt;  * Model: wn + powerlaw </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Functional parameters:</span>
-<span class="co">#&gt;      bias                           :     +0.88713871</span>
-<span class="co">#&gt;      trend                          :     +0.01649642</span>
-<span class="co">#&gt;      A*cos(U)                       :     +2.43946695</span>
-<span class="co">#&gt;      A*sin(U)                       :     +2.04648501</span>
-<span class="co">#&gt;      jump                           :    +19.53675553</span>
-<span class="co">#&gt;      jump                           :    +30.89067705</span>
+<span class="co">#&gt;      bias                 :  +0.891683</span>
+<span class="co">#&gt;      trend                :  +0.016483</span>
+<span class="co">#&gt;      A*cos(U)             :  +2.438139</span>
+<span class="co">#&gt;      A*sin(U)             :  +2.043069</span>
+<span class="co">#&gt;      jump                 : +19.550541</span>
+<span class="co">#&gt;      jump                 : +30.869573</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Stochastc parameters:</span>
-<span class="co">#&gt;      wn_sigma2                      :    +12.30793555</span>
-<span class="co">#&gt;      powerlaw_sigma2                :    +11.37269314</span>
-<span class="co">#&gt;      powerlaw_d                     :     +0.35012119</span>
+<span class="co">#&gt;      wn_sigma2                      :    +11.96947053</span>
+<span class="co">#&gt;      powerlaw_sigma2                :    +11.75061286</span>
+<span class="co">#&gt;      powerlaw_d                     :     +0.34298983</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;  * Estimation time: 6.89 s</span>
+<span class="co">#&gt;  * Estimation time: 0.60 s</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_gmwmx_2</span><span class="op">)</span></code></pre></div>
 <p><img src="simulate_data_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -279,15 +279,15 @@ structure:</p>
 <code class="sourceCode R"><span class="va">fit_mle_hector</span>
 <span class="co">#&gt; GNSS time series model</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;  * Model:  </span>
+<span class="co">#&gt;  * Model: wn + powerlaw </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Functional parameters:</span>
-<span class="co">#&gt;      bias                           :     -0.88900000 +/- 1.590</span>
-<span class="co">#&gt;      trend                          :     +0.01563893 +/- 0.002</span>
-<span class="co">#&gt;      A*cos(U)                       :     +2.54270000 +/- 0.487</span>
-<span class="co">#&gt;      A*sin(U)                       :     +0.96621800 +/- 0.483</span>
-<span class="co">#&gt;      jump                           :    +18.00840000 +/- 1.520</span>
-<span class="co">#&gt;      jump                           :    +30.62610000 +/- 1.531</span>
+<span class="co">#&gt;      bias                 :  -0.889000 +/- 1.590</span>
+<span class="co">#&gt;      trend                :  +0.015639 +/- 0.002</span>
+<span class="co">#&gt;      A*cos(U)             :  +2.542700 +/- 0.487</span>
+<span class="co">#&gt;      A*sin(U)             :  +0.966218 +/- 0.483</span>
+<span class="co">#&gt;      jump                 : +18.008400 +/- 1.520</span>
+<span class="co">#&gt;      jump                 : +30.626100 +/- 1.531</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  * Stochastc parameters:</span>
 <span class="co">#&gt;      wn_sigma2                      :     +9.10561714</span>
