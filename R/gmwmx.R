@@ -89,6 +89,46 @@ powmat_non_int = function(mat, power){
   with(eigen(mat), vectors %*% (values^power * t(vectors))) 
 }
 
+wvar_missing = function(Xt, alpha = 0.05){
+  wv = wv::wvar(Xt, alpha = alpha)
+  J = length(wv$variance)
+  # wv=list("variance"=NULL,
+  #         "ci_low" = NULL,
+  #         "ci_high"=NULL,
+  #         "robust" =F,
+  #         "eff"=0.6,
+  #         "alpha"=alpha,
+  #         "scales"=NULL,
+  #         "decomp" = "modwt",
+  #         "unit"=NULL,
+  #         "filter" = "haar")
+  # class(wv) = "wvar"
+  # J = floor(log2(length(Xt))-1)
+  modwt_x = wv::modwt(Xt)
+  nu = nu_down = nu_up = rep(NA, J)
+  alpha_ov_2 = alpha/2
+  for(j in 1:J){
+    Wt = na.omit(modwt_x[[j]])
+    nu[j] = mean(Wt^2)
+    Mj = length(Wt)
+    eta3 = max(Mj/2^j, 1)
+    # There is a small bug with the CI (to be fixed later)
+    nu_up[j] = eta3*nu[j] / qchisq(1-alpha_ov_2, eta3, 1, 0)
+    nu_down[j] = eta3*nu[j] / qchisq(alpha_ov_2, eta3, 1, 0)
+  }
+  
+  wv$variance = nu
+  wv$ci_low = nu_down
+  wv$ci_high = nu_up
+  
+  Jmax = length(na.omit(wv$variance))
+  wv$variance = wv$variance[1:Jmax]
+  wv$ci_low = wv$ci_low[1:Jmax]
+  wv$ci_high = wv$ci_high[1:Jmax]
+  wv$scales = wv$scales[1:Jmax,1]
+  wv
+  
+}
 
 
 #' Estimate a stochastic model in a two-steps procedure using the GMWMX estimator.
@@ -104,7 +144,7 @@ powmat_non_int = function(mat, power){
 #' @return A \code{gnsstsmodel} object.
 #' @importFrom Matrix solve
 #' @importFrom  stats coefficients lm optim residuals 
-#' @importFrom wv wvar
+#' @importFrom wv wvar modwt
 #' @importFrom ltsa TrenchInverse
 #' @export
 #' 
@@ -167,7 +207,7 @@ estimate_gmwmx <- function(
     rsd = rsd_data
     
     # compute wavelet variance of the residuals
-    wv_rsd = wvar(rsd, robust = FALSE)
+    wv_rsd = wvar_missing(rsd, robust = FALSE)
 
     # fit the stochastic model on the residuals
     theta_hat = fit_base(
@@ -214,7 +254,7 @@ estimate_gmwmx <- function(
         rsd = rsd_data
         
         # compute wavelet variance of the residuals
-        wv_rsd = wvar(rsd, robust = FALSE)
+        wv_rsd = wvar_missing(rsd, robust = FALSE)
         
         # fit the stochastic model on the residuals
         theta_hat = fit_base(
