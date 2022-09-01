@@ -146,6 +146,8 @@ wvar_missing = function(Xt, alpha = 0.05){
 #' @importFrom  stats coefficients lm optim residuals 
 #' @importFrom wv wvar modwt
 #' @importFrom ltsa TrenchInverse
+#' @importFrom stats na.omit qchisq
+
 #' @export
 #' 
 #' @examples 
