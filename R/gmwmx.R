@@ -105,7 +105,7 @@ powmat_non_int = function(mat, power){
 #' @importFrom Matrix solve
 #' @importFrom  stats coefficients lm optim residuals 
 #' @importFrom wv wvar
-#' 
+#' @importFrom ltsa TrenchInverse
 #' @export
 #' 
 #' @examples 
@@ -189,7 +189,7 @@ estimate_gmwmx <- function(
     
       for(k in seq((k_iter-1))){
         # compute inverse of sigma
-        Sigma_inv = Matrix::solve(Sigma)
+        Sigma_inv = ltsa::TrenchInverse(Sigma)
         
         # subset X and Sigma
         X_sub = X[which_data, ]
