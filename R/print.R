@@ -28,7 +28,7 @@ print.gnsstsmodel <- function(x, ...) {
     cat("\n")
   }
   
-  cat("\n * Stochastc parameters:\n")
+  cat("\n * Stochastic parameters:\n")
   for (i in seq_along(x$theta_hat)) {
     cat(sprintf("     %-30s : %+15.8f\n", names(x$theta_hat[i]), x$theta_hat[i]))
   }
