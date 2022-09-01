@@ -32,4 +32,5 @@ Imports:
     wv,
     Matrix,
     longmemo,
-    rjson
+    rjson,
+    ltsa
