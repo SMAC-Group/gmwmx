@@ -169,6 +169,7 @@ estimate_gmwmx <- function(
   ) {
 
 
+
   # check that the provided object is a gnssts object
   if (!("gnssts" %in% class(x))) {
     stop("x must be an object of type 'gnssts'")

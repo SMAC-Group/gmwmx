@@ -102,9 +102,6 @@ estimate_hector <- function(
 ) {
   
 
-  
-  
-  
   if (!("gnssts" %in% class(x))) {
     stop("x must be an object of type 'gnssts")
   }
@@ -116,7 +113,7 @@ estimate_hector <- function(
   model = create_model_descriptor(model_string)
   
   # create temporary folders
-  working_folder = paste(tempdir(), stri_rand_strings(n=1,length = 16), sep = "/")
+  working_folder = paste(tempdir(), stringi::stri_rand_strings(n=1,length = 16), sep = "/")
   
   if (cleanup == F) {
     message(paste("Working in", working_folder))
@@ -144,12 +141,14 @@ estimate_hector <- function(
   # write cfg file
   write(cfg, file = cfg_file)
   
-  # run hector assuming that estimatetrend is accesible in the PATH
+  # define command to run hector on signal with ctl file
   cmd = sprintf("cd %s; %s '%s'", working_folder, "estimatetrend", cfg_file)
   
+  # run hector assuming that estimatetrend is accesible in the PATH
   timing = system.time({out = system(cmd, intern = TRUE)})
   
-  json = fromJSON(file = paste(working_folder, "estimatetrend.json", sep="/"))
+  # parse json
+  json = rjson::fromJSON(file = paste(working_folder, "estimatetrend.json", sep="/"))
   
   # collect deterministic parameters
   
@@ -177,10 +176,14 @@ estimate_hector <- function(
     json[["jumps_sigmas"]]
   )
   
-  names(beta_hat) <- c("bias", "trend", rep(c("A*cos(U)", "A*sin(U)"), n_seasonal), rep("jump", length(x$jumps)))
+  # set names of beta std
+  names(beta_std) = sprintf("std_%s", names(beta_hat))
+  
   
   # transform beta hat to vector
   beta_hat = as.vector(unlist(beta_hat))
+  names(beta_hat) <- c("bias", "trend", rep(c("A*cos(U)", "A*sin(U)"), n_seasonal), rep("jump", length(x$jumps)))
+  
   
   # collect stochastic parameters
   theta_hat = gen_pick_params_hector(model, json)

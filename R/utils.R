@@ -7,6 +7,7 @@ ymdhms_to_j <- function(year, month, day, hour, minute, second) {
   as.numeric(strsplit(tail(ret,1), ":")[[1]][2])
 }
 
+
 #' @importFrom stringi stri_match_first
 find_one_output <- function(out, pattern) {
   ret = NA
