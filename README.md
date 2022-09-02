@@ -84,7 +84,7 @@ The `gmwmx` package relies on a limited number of external libraries, but notabl
 This source code is released under is the GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3.0. 
 
 ## Acknowledgements
-We thank Dr. Machiel Bos for his relevant and useful feedback on the integration of `Hector` in the `gmwmx` `R` package.
+We greatly thank Dr. Machiel Bos for his useful advices and constructive feedbacks on the correct integration of `Hector` in the `gmwmx` `R` package.
 
 ## References
 Cucci, D.A., Voirol, L., Kermarrec, G., Montillet, J.P. and Guerrier, S., 2022. The Generalized Method of Wavelet Moments with Exogenous Inputs: a Fast Approach for the Analysis of GNSS Position Time Series. arXiv preprint arXiv:2206.09668.
