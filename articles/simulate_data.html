@@ -130,7 +130,7 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"SMAC-Group/simts"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">model_i</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/WN.html" class="external-link">WN</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_wn</span><span class="op">)</span> <span class="op">+</span> <span class="fu">PLP</span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_powerlaw</span>, d <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">model_i</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/WN.html" class="external-link">WN</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_wn</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/simts/man/PLP.html" class="external-link">PLP</a></span><span class="op">(</span>sigma2 <span class="op">=</span> <span class="va">sigma2_powerlaw</span>, d <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># define time at which there are jumps</span></span>
 <span><span class="va">jump_vec</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">600</span>, <span class="fl">1200</span><span class="op">)</span></span>
@@ -228,7 +228,7 @@
 <span><span class="co">#&gt;      powerlaw_sigma2                :    +11.93347935</span></span>
 <span><span class="co">#&gt;      powerlaw_d                     :     +0.34017417</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  * Estimation time: 0.24 s</span></span>
+<span><span class="co">#&gt;  * Estimation time: 0.26 s</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_gmwmx</span><span class="op">)</span></span></code></pre></div>
 <p><img src="simulate_data_files/figure-html/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
@@ -256,7 +256,7 @@
 <span><span class="co">#&gt;      powerlaw_sigma2                :    +11.75061286</span></span>
 <span><span class="co">#&gt;      powerlaw_d                     :     +0.34298983</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  * Estimation time: 0.90 s</span></span>
+<span><span class="co">#&gt;  * Estimation time: 0.82 s</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_gmwmx_2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="simulate_data_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
