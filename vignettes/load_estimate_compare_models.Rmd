@@ -21,7 +21,8 @@ dobs = gmwmx::PBO_get_station("DOBS", column = "dN")
 write.gnssts(dobs, filename = "data_dobs.mom")
 ```
 
-Consider that you want to estimate a model on data saved in a `.mom` file located at a specific `file_path` on your computer. 
+Consider that you want to estimate a model on data saved in a `.mom` file located at a specific `file_path` on your computer, where `file_path` is the path where is located the `.mom` file (for example `file_path = "/home/name_of_the_user/Documents/data.mom"`) 
+
 ```{r, echo=F}
 file_path = system.file("extdata", "data_dobs.mom", package = "gmwmx", mustWork = T)
 data_dobs = read.gnssts(filename = file_path)

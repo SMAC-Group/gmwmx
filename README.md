@@ -75,6 +75,14 @@ For Linux users that are on distributions supported by `Hector`, this can be eas
 
 ```
 
+Some users have reported that the procedure described above did not work on their installation and that even after completing these steps, the path containing the executable binaries of `Hector` was not accessible to the `PATH` recognized by `R`. In this case, a strategy that seems to work is to directly indicate the path where `Hector` is located by executing the following command before executing a function that runs `Hector`:
+
+```
+Sys.setenv(PATH = "$HOME/app/hector/bin") 
+```
+
+where `"$HOME/app/hector/bin"` is the path where are located `Hector`'s binaries.
+
 ### External `R` libraries
 
 The `gmwmx` package relies on a limited number of external libraries, but notably on `Rcpp` and `RcppArmadillo` which require a `C++` compiler for installation, such as for example `gcc`.

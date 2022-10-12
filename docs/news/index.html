@@ -78,7 +78,7 @@
 <ul><li>Change vignette load_estimate_compare_models.Rmd so that no estimation is performed when compiling the vignette. Saved estimated models in inst/extdata.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.0.2" id="update-gmwmx-version-102">Update gmwmx version 1.0.2<a class="anchor" aria-label="anchor" href="#update-gmwmx-version-102"></a></h2>
+<h2 class="page-header" data-toc-text="1.0.2" id="update-gmwmx-version-102">Update gmwmx version 1.0.2<small>2022-09-01</small><a class="anchor" aria-label="anchor" href="#update-gmwmx-version-102"></a></h2>
 <ul><li>Modified how is inverted the Sigma matrix in estimate_gmwmx() by now using ltsa::TrenchInverse to exploit toeplitz structure of the matrix.</li>
 <li>Modified how is computed the Wavelet Variance of the GLS residuals to be performed on the available wavelets coefficients in presence of missing observations.</li>
 <li>Corrected bug in estimate_hector() that led to non-existent names for the vector of estimated functional parameters, causing problems when printing the estimated model.</li>

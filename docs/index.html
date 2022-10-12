@@ -144,6 +144,9 @@
 <pre><code>&gt; Sys.getenv("PATH")
 [1] "$HOME/app/hector/bin:..."
 </code></pre>
+<p>Some users have reported that the procedure described above did not work on their installation and that even after completing these steps, the path containing the executable binaries of <code>Hector</code> was not accessible to the <code>PATH</code> recognized by <code>R</code>. In this case, a strategy that seems to work is to directly indicate the path where <code>Hector</code> is located by executing the following command before executing a function that runs <code>Hector</code>:</p>
+<pre><code><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>PATH <span class="op">=</span> <span class="st">"$HOME/app/hector/bin"</span><span class="op">)</span></code></pre>
+<p>where <code>"$HOME/app/hector/bin"</code> is the path where are located <code>Hector</code>’s binaries.</p>
 </div>
 <div class="section level3">
 <h3 id="external-r-libraries">External <code>R</code> libraries<a class="anchor" aria-label="anchor" href="#external-r-libraries"></a>
@@ -155,6 +158,11 @@
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
 </h2>
 <p>This source code is released under is the GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3.0.</p>
+</div>
+<div class="section level2">
+<h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h2>
+<p>We thank Dr. Machiel Bos for his helpful advises and constructive comments that helped us to improve the implementation of the <code>gmwmx</code> package and to ensure the correct integration of <code>Hector</code> into the <code>gmwmx</code> <code>R</code> package.</p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
