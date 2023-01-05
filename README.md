@@ -1,8 +1,5 @@
-<!-- badges: start -->
 
-    
-      
-      
+<!-- badges: start -->
 ![example workflow](https://github.com/SMAC-Group/gmwmx/actions/workflows/R-CMD-check.yaml/badge.svg)
 [![CRAN status](https://www.r-pkg.org/badges/version/gmwmx)](https://CRAN.R-project.org/package=gmwmx)
 ![](https://img.shields.io/github/last-commit/SMAC-Group/gmwmx) 
