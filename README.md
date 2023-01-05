@@ -97,7 +97,7 @@ The `gmwmx` package relies on a limited number of external libraries, but notabl
 
 ## Usage from a `MATLAB` environement 
 
-It is possible to execute functions from the `gmwmx` `R` package from `MATLAB` and to save estimated models and `gmwmx` objects in a `MATLAB` environment thanks to [`Rcall`](https://github.com/kreutz-lab/Rcall). [`Rcall`](https://github.com/kreutz-lab/Rcall) is an interface which runs in `MATLAB` and provides direct access to methods and software packages implemented in `R`. Refer to issue #1 for the detailed procedure and to the official [`Rcall`](https://github.com/kreutz-lab/Rcall) project for support.
+It is possible to execute functions from the `gmwmx` `R` package from `MATLAB` and to save estimated models and `gmwmx` objects in a `MATLAB` environment thanks to [`Rcall`](https://github.com/kreutz-lab/Rcall). [`Rcall`](https://github.com/kreutz-lab/Rcall) is an interface which runs in `MATLAB` and provides direct access to methods and software packages implemented in `R`. Refer to issue issue [#1](https://github.com/SMAC-Group/gmwmx/issues/1) for the detailed procedure and to the official [`Rcall`](https://github.com/kreutz-lab/Rcall) project for support.
 
 
 ## License
