@@ -95,9 +95,9 @@ where `"$HOME/app/hector/bin"` is the path where are located `Hector`'s binaries
 
 The `gmwmx` package relies on a limited number of external libraries, but notably on `Rcpp` and `RcppArmadillo` which require a `C++` compiler for installation, such as for example `gcc`.
 
-## Usage from a `MATLAB` environement 
+## Usage from a `MATLAB` environment 
 
-It is possible to execute functions from the `gmwmx` `R` package directly from a `MATLAB` environement and to save estimated models in the `MATLAB` environment thanks to [`Rcall`](https://github.com/kreutz-lab/Rcall). [`Rcall`](https://github.com/kreutz-lab/Rcall) is an interface which runs in `MATLAB` and provides direct access to methods and software packages implemented in `R`. Refer to issue [#1](https://github.com/SMAC-Group/gmwmx/issues/1) for the detailed procedure and to the official [`Rcall`](https://github.com/kreutz-lab/Rcall) project for support.
+It is possible to execute functions from the `gmwmx` `R` package directly from a `MATLAB` environment and to save estimated models in the `MATLAB` environment thanks to [`Rcall`](https://github.com/kreutz-lab/Rcall). [`Rcall`](https://github.com/kreutz-lab/Rcall) is an interface which runs in `MATLAB` and provides direct access to methods and software packages implemented in `R`. Refer to issue [#1](https://github.com/SMAC-Group/gmwmx/issues/1) for the detailed procedure and to the official [`Rcall`](https://github.com/kreutz-lab/Rcall) project for support.
 
 
 ## License
