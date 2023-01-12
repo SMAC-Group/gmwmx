@@ -1,10 +1,5 @@
 
 <!-- badges: start -->
-
-
-
-
-
 ![example workflow](https://github.com/SMAC-Group/gmwmx/actions/workflows/R-CMD-check.yaml/badge.svg)
 [![CRAN status](https://www.r-pkg.org/badges/version/gmwmx)](https://CRAN.R-project.org/package=gmwmx)
 ![](https://img.shields.io/github/last-commit/SMAC-Group/gmwmx) 
@@ -14,12 +9,6 @@
 downloads](http://cranlogs.r-pkg.org/badges/gmwmx)](https://www.r-pkg.org/pkg/gmwmx)
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/gmwmx)](https://www.r-pkg.org/pkg/gmwmx)
-
-
-
-
-
-
 <!-- badges: end -->
 
 
