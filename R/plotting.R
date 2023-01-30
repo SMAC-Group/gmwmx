@@ -102,12 +102,14 @@ plot_stochastic = function(wv_emph, theta_hat, model, theta_0, yl = NULL, plot_i
 #' @importFrom graphics abline axis layout legend lines mtext par points polygon rect text
 #' 
 #' @examples 
+#' \dontrun{
 #' data(cola)
 #' fit_gmwmx = estimate_gmwmx(x = cola,
 #'                            theta_0 = c(0.1,0.1,0.1,0.1), 
 #'                            n_seasonal = 1, 
 #'                            model_string = "wn+matern")
 #' plot(fit_gmwmx)
+#' }
 plot.gnsstsmodel <- function(
   x, 
   main = NULL, 
