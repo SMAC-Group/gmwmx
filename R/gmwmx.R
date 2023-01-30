@@ -151,11 +151,13 @@ wvar_missing = function(Xt, alpha = 0.05){
 #' @export
 #' 
 #' @examples 
+#' \dontrun{
 #' data(cola)
 #' fit_gmwmx = estimate_gmwmx(x = cola,
 #'                            theta_0 = c(0.1,0.1,0.1,0.1), 
 #'                            n_seasonal = 1, 
 #'                            model_string = "wn+matern")
+#' }
 #' 
 estimate_gmwmx <- function(
   x,
@@ -180,6 +182,12 @@ estimate_gmwmx <- function(
     stop("Incorrect provided argument k_iter. Argument k_iter should be either the numeric value 1 or 2. Default value if 1.")
   }
   
+  # throw a warning about random walk with gmwmx
+  if(grepl(pattern = "rw", x = model_string)){
+    warning("The properties of a stochastic model including a Random Walk have not been studied and the results may be unreliable. Moreover, the GMWMX-2 and confidence intervals are not supported.")
+  }
+  
+  # create model
   model = create_model_descriptor(model_string)
   
   # handle gaps
