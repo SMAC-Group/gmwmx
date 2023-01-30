@@ -170,6 +170,8 @@ estimate_gmwmx <- function(
   k_iter = 1
   ) {
   
+
+  
   
  
   # check that the provided object is a gnssts object
@@ -184,7 +186,17 @@ estimate_gmwmx <- function(
   
   # throw a warning about random walk with gmwmx
   if(grepl(pattern = "rw", x = model_string)){
-    warning("The properties of a stochastic model including a Random Walk have not been studied and the results may be unreliable. Moreover, the GMWMX-2 and confidence intervals are not supported.")
+    warning("The properties of the GMWMX when the specified stochastic model includes a Random Walk have not been studied and the results may be unreliable. Moreover, the GMWMX-2 and confidence intervals are not yet supported.")
+  }
+  
+  # check that GMWMX2 or ci are not specified if rw in stochastic model
+  if(grepl(pattern = "rw", x = model_string)){
+    if(k_iter>1){
+      stop("Random Walk specified in stochastic model. The GMWMX-2 is not yet implemented when the specified stochastic model includes a Random Walk.")
+    }
+    if(ci){
+      stop("Random Walk specified in stochastic model. Confidence intervals are not yet implemented when the specified stochastic model includes a Random Walk.")
+    }
   }
   
   # create model
