@@ -24,6 +24,7 @@ No return value. Produce a plot comparing two estimated models.
 Compare graphically two \code{gnsstsmodel} objects.
 }
 \examples{
+\dontrun{
 data(cola)
 fit_gmwmx_1 = estimate_gmwmx(x = cola,
                              theta_0 = c(0.1,0.1,0.1,0.1), 
@@ -34,4 +35,5 @@ fit_gmwmx_2 = estimate_gmwmx(x = cola,
                              n_seasonal = 1, 
                              model_string = "wn+powerlaw")
 compare_fits(fit_gmwmx_1, fit_gmwmx_2)
+}
 }

@@ -9,6 +9,7 @@
 #' @export
 #' 
 #' @examples 
+#' \dontrun{
 #' data(cola)
 #' fit_gmwmx_1 = estimate_gmwmx(x = cola,
 #'                              theta_0 = c(0.1,0.1,0.1,0.1), 
@@ -19,6 +20,7 @@
 #'                              n_seasonal = 1, 
 #'                              model_string = "wn+powerlaw")
 #' compare_fits(fit_gmwmx_1, fit_gmwmx_2)
+#' }
 compare_fits <- function(fit_1, fit_2,   
                          main = NULL,
                          y_unit = "mm",
