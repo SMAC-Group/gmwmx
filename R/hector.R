@@ -63,8 +63,15 @@ infuse_estimate_trend_tmp = function(data_file,
   tpl_7 = stringi::stri_replace( str = tpl_6,regex =  "estimate_offsets_value" , replacement = if (!is.null(x$jumps[1])) "yes" else "no")
   
   tpl_8 = stringi::stri_replace( str = tpl_7,regex =  "degree_polynomial_value" , replacement = 1)
+
   
-  tpl_8
+  
+  if(grepl(pattern = "RandomWalkGGM", x = noise_model)){
+    tpl_9 = paste0(tpl_8, "GGM_1mphi         6.9e-06\n")
+  }else{
+    tpl_9 = tpl_8
+  }
+  tpl_9
 }
 
 
@@ -101,7 +108,6 @@ estimate_hector <- function(
     cleanup = TRUE
 ) {
   
-
   if (!("gnssts" %in% class(x))) {
     stop("x must be an object of type 'gnssts")
   }
