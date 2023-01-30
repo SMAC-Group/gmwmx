@@ -105,8 +105,7 @@ estimate_hector <- function(
     n_seasonal = 1, 
     model_string,
     likelihood_method = "AmmarGrag",
-    cleanup = TRUE
-) {
+    cleanup = TRUE) {
   
   if (!("gnssts" %in% class(x))) {
     stop("x must be an object of type 'gnssts")
