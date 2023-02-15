@@ -6,7 +6,6 @@ Initial release
 
 - Change vignette load_estimate_compare_models.Rmd so that no estimation is performed when compiling the vignette. Saved estimated models in inst/extdata.
 
-
 # Update gmwmx version 1.0.2
 
 - Modified how is inverted the Sigma matrix in estimate_gmwmx() by now using ltsa::TrenchInverse to exploit toeplitz structure of the matrix. 
