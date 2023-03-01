@@ -194,8 +194,9 @@ at the reference epoch <span class="math inline">\(t_0\)</span>, <span class="ma
 semi-annual seasonal terms, respectively). The offset terms models
 earthquakes, equipment changes or human intervention in which <span class="math inline">\(g_k\)</span> is the magnitude of the change at
 epochs <span class="math inline">\(t_k\)</span>, <span class="math inline">\(n_g\)</span> is the total number of offsets, and
-<span class="math inline">\(H\)</span> is the Heaviside step
-function.</p>
+<span class="math inline">\(H\)</span> is the Heaviside step function.
+Note that the estimates of the parameters of the functional model are
+provided in unit/day.</p>
 </div>
 <div class="section level4">
 <h4 id="stochastic-model">Stochastic model<a class="anchor" aria-label="anchor" href="#stochastic-model"></a>
@@ -232,6 +233,8 @@ of</p>
 <li>Fractional Gaussian noise (<code>fgn</code>) and</li>
 <li>Power Law process (<code>powerlaw</code>).</li>
 </ol>
+<p>Note that only the <code>gmwmx</code> current version accepts only
+one process of each kind.</p>
 </div>
 </div>
 <div class="section level3">
