@@ -88,7 +88,7 @@ The `gmwmx` package allows to estimate functional models for which the $i$-th co
     \mathbb{E}[\mathbf{Y}_i] = \mathbf{A}_i^T {{\bf x}}_0 = a+b\left(t_{i}-t_{0}\right)+\sum_{h=1}^{2}\left[c_{h} \sin \left(2 \pi f_{h} t_{i}\right)+d_{h} \cos \left(2 \pi f_{h} t_{i}\right)\right] + \sum_{k=1}^{n_{g}} g_{k} H\left(t_{i}-t_{k}\right),
 \end{equation}
 
-where $a$ is the initial position at the reference epoch $t_0$, $b$ is the velocity parameter, $c_k$  and $d_k$ are the periodic motion parameters ($h = 1$ and $h = 2$ represent the annual and semi-annual seasonal terms, respectively). The offset terms models earthquakes, equipment changes or human intervention in which $g_k$ is the magnitude of the change at epochs $t_k$, $n_g$ is the total number of offsets, and $H$ is the Heaviside step function. 
+where $a$ is the initial position at the reference epoch $t_0$, $b$ is the velocity parameter, $c_k$  and $d_k$ are the periodic motion parameters ($h = 1$ and $h = 2$ represent the annual and semi-annual seasonal terms, respectively). The offset terms models earthquakes, equipment changes or human intervention in which $g_k$ is the magnitude of the change at epochs $t_k$, $n_g$ is the total number of offsets, and $H$ is the Heaviside step function. Note that the estimates of the parameters of the functional model are provided in unit/day.
 
 ### Stochastic model
 Regarding the stochastic model, we assume that $\boldsymbol{\varepsilon}_i=\mathbf{Y}_i-\mathbb{E}[\mathbf{Y}_i]$ is a strictly (intrinsically) stationary process and that
@@ -110,6 +110,8 @@ The `gmwmx` allows to estimate parameters of a specified functional model as wel
 (2) Matérn process (`matern`)
 (3) Fractional Gaussian noise (`fgn`) and 
 (4) Power Law process (`powerlaw`).
+
+Note that only the `gmwmx` current version accepts only one process of each kind.
 
 ## Estimate a model with the GMWMX
 You can estimate a model using the GMWMX estimator with the function `estimate_gmwmx()`. 

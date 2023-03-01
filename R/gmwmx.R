@@ -131,7 +131,7 @@ wvar_missing = function(Xt, alpha = 0.05){
 }
 
 
-#' Estimate a stochastic model in a two-steps procedure using the GMWMX estimator.
+#' Estimate a stochastic model in a two-steps procedure using the GMWMX estimator. 
 #' 
 #' @param x A \code{gnssts} object
 #' @param theta_0 A \code{vector} specifying the initial values for the vector of parameter of the stochastic model considered.
