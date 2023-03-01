@@ -98,34 +98,7 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cola</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">fit_gmwmx</span> <span class="op">=</span> <span class="fu"><a href="estimate_gmwmx.html">estimate_gmwmx</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cola</span>,</span></span>
-<span class="r-in"><span>                           theta_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span><span class="op">)</span>, </span></span>
-<span class="r-in"><span>                           n_seasonal <span class="op">=</span> <span class="fl">1</span>, </span></span>
-<span class="r-in"><span>                           model_string <span class="op">=</span> <span class="st">"wn+matern"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fit_gmwmx</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GNSS time series model</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  * Model: wn + matern </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  * Functional parameters:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      bias            :  -0.017968</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      trend           :  -0.000037</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      A*cos(U)        :  +0.000044</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      A*sin(U)        :  +0.000286</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      jump            :  -0.001209</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      jump            :  +0.005143</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      jump            :  -0.004245</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      jump            :  -0.000259</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  * Stochastic parameters:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      wn_sigma2                      :     +0.00000328</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      matern_sigma^2                 :     +0.00003801</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      matern_lambda                  :     +0.00002522</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      matern_alpha                   :     +0.73270785</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  * Estimation time: 1.63 s</span>
-</code></pre></div>
+    
     </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
