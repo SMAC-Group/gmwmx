@@ -7,11 +7,16 @@
 #'
 #' @examples 
 #' data(cola)
+#' #' \dontrun{
+#' library(gmwmx)
 #' fit_gmwmx = estimate_gmwmx(x = cola,
-#'                            theta_0 = c(0.1,0.1,0.1,0.1), 
-#'                            n_seasonal = 1, 
+#'                            theta_0 = c(0.1,0.1,0.1,0.1),
+#'                            n_seasonal = 1,
+#'                            ci=T,
 #'                            model_string = "wn+matern")
 #' print(fit_gmwmx)
+#' }
+#' 
 print.gnsstsmodel <- function(x, ...) {
   
   cat("GNSS time series model\n\n")
