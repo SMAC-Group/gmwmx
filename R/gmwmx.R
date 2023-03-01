@@ -169,10 +169,6 @@ estimate_gmwmx <- function(
   ci = FALSE,
   k_iter = 1
   ) {
-  
-
-  
-  
  
   # check that the provided object is a gnssts object
   if (!("gnssts" %in% class(x))) {

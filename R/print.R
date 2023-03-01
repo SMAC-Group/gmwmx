@@ -13,7 +13,7 @@
 #'                            model_string = "wn+matern")
 #' print(fit_gmwmx)
 print.gnsstsmodel <- function(x, ...) {
-
+  
   cat("GNSS time series model\n\n")
   
   cat(paste(" * Model:", paste(x$model$names, collapse = " + "), "\n\n"))
@@ -21,9 +21,9 @@ print.gnsstsmodel <- function(x, ...) {
   cat(" * Functional parameters:\n")
   for (i in seq_along(x$beta_hat)) {
 
-    cat(sprintf("     %-20s : %+10f", names(x$beta_hat[i]), x$beta_hat[i]))
+    cat(sprintf("     %-15s : %+10f", names(x$beta_hat[i]), x$beta_hat[i]))
     if (!is.na(x$beta_std[i])) {
-      cat(sprintf(" +/- %3.3f", x$beta_std[i]))
+      cat(sprintf(" +/- %10.10f", x$beta_std[i]))
     }
     cat("\n")
   }
