@@ -13,7 +13,7 @@ cosU <- amplitude * cos(phase)
 sinU <- amplitude * sin(phase)
 
 # consider n years of daily observations
-year <- 2
+year <- 10
 n <- year * 365
 
 
@@ -40,7 +40,9 @@ x_0 <- c(bias, trend, cosU, sinU, jump_height)
 # define number of Monte Carlo simulation
 n_simu <- 100
 
-mat_res = matrix(ncol=18, nrow=n_simu)
+# mat_res = matrix(ncol=18, nrow=n_simu)
+
+mat_res = matrix(ncol=9, nrow=n_simu)
 
 pb <- progress_bar$new(total = n_simu)
 
@@ -70,27 +72,33 @@ for(b in seq(n_simu)){
   )
   
 
-  # MLE
-  fit_hector <- estimate_hector(
-    x = gnssts_obj,
-    model = "wn+rw",
-    n_seasonal = 1
-  )
+  # # MLE
+  # fit_hector <- estimate_hector(
+  #   x = gnssts_obj,
+  #   model = "wn+rw",
+  #   n_seasonal = 1
+  # )
+  # 
+  # # save parameters
+  # mat_res[b, ] = c(  fit_gmwmx$beta_hat,
+  #                    fit_gmwmx$theta_hat,
+  #                    fit_hector$beta_hat,
+  #                    fit_hector$theta_hat)
   
-  # save parameters
   mat_res[b, ] = c(  fit_gmwmx$beta_hat,
-                     fit_gmwmx$theta_hat,
-                     fit_hector$beta_hat,
-                     fit_hector$theta_hat)
-
+                     fit_gmwmx$theta_hat)
+  
   pb$tick()
   
 }
 
 
 # boxplot
-boxplot(mat_res[, c(8, 17)])
+# boxplot(mat_res[, c(8, 17)])
+# abline(h = sigma2_wn)
+# boxplot(mat_res[, c(9, 18)])
+# abline(h =gamma2_rw)
+boxplot(mat_res[, c(8)])
 abline(h = sigma2_wn)
-boxplot(mat_res[, c(9, 18)])
+boxplot(mat_res[, c(9)])
 abline(h =gamma2_rw)
-
