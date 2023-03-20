@@ -1,29 +1,21 @@
 # Local check on Ubuntu 20.04
 
-── R CMD check results ───────────────── gmwmx 1.0.0 ────
-Duration: 1m 17.1s
+── R CMD check results ───────────────── gmwmx 1.0.3 ────
+Duration: 55.6s
 
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+❯ checking compiled code ... OK
+   WARNING
+  ‘qpdf’ is needed for checks on size reduction of PDFs
 
+❯ checking for future file timestamps ... NOTE
+  unable to verify current time
 
-# Rhub check
+0 errors ✔ | 1 warning ✖ | 1 note ✖
+Error: R CMD check found WARNINGs
+Execution halted
 
-## macos-highsierra-release-cran
+Exited with status 1.
 
-── gmwmx 1.0.0: OK
-
-  Build ID:   gmwmx_1.0.0.tar.gz-435c71bcae4447f7911aa3276aa7e819
-  Platform:   macOS 10.13.6 High Sierra, R-release, CRAN's setup
-  Submitted:  7m 24.4s ago
-  Build time: 3m 43.5s
-
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
-# Windows check with `devtools::check_win_devel()`
-
-Status: 1 NOTE
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: 'Lionel Voirol <lionelvoirol@hotmail.com>'
 
 ## R-CMD-check on GitHub actions 
 

@@ -23,6 +23,8 @@ rw_theo_wv = function(theta, scales) {
   rw_to_wv(theta[1], scales)
 }
 
+
+#  this needs to be implemented differently, create the sigma matrix for this process independently from the autocorrelation vector. 
 rw_autocovariance = function(theta, n) {
   acf = seq(1,n)*theta
   acf
