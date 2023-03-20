@@ -17,7 +17,6 @@ Initial release
 
 - Minor modification of the acknowledgements.
 - Extend documentation.
-- Change GMWMX algorithm to compute the WV on the available wavelets coefficients in presence of missing values in the signal.
 - Add support for point estimates for the GMWMX-1 for model that includes a Random Walk in the stochastic model.
 - Add reference to doi: 10.1007/s00190-023-01702-8.
 - Change number of decimals for std of functional parameters in `print.gnsstsmodel`.
