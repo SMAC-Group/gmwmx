@@ -4,7 +4,13 @@
 \alias{PBO_get_station}
 \title{Load station data from PBO}
 \usage{
-PBO_get_station(station_name, column, time_range = c(-Inf, Inf), scale = 1)
+PBO_get_station(
+  station_name,
+  column,
+  time_range = c(-Inf, Inf),
+  scale = 1,
+  token
+)
 }
 \arguments{
 \item{station_name}{A \code{string} specifying the PBO station name.}
@@ -14,6 +20,8 @@ PBO_get_station(station_name, column, time_range = c(-Inf, Inf), scale = 1)
 \item{time_range}{A \code{vector} of 2 specifying the time range of data to extract.}
 
 \item{scale}{A \code{scalar} specifying an optional scaling parameter applied to the extracted data.}
+
+\item{token}{Your EarthScope API key.}
 }
 \value{
 A \code{gnssts} object that contains the data associated with the specified PBO station.
@@ -23,7 +31,7 @@ Load station data from PBO
 }
 \examples{
 \dontrun{
-pbo_cola_data = PBO_get_station("COLA", column="dE")
+pbo_cola_data = PBO_get_station("COLA", column="dE", token = "xxx")
 str(pbo_cola_data)
 }
 }

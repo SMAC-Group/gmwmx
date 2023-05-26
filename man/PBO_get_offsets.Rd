@@ -4,10 +4,12 @@
 \alias{PBO_get_offsets}
 \title{Extract offsets for a PBO station}
 \usage{
-PBO_get_offsets(station_name)
+PBO_get_offsets(station_name, token)
 }
 \arguments{
 \item{station_name}{A \code{string} specifying the PBO station name.}
+
+\item{token}{Your EarthScope API key.}
 }
 \value{
 A \code{vector} specifying the offsets of a PBO station.
@@ -17,7 +19,7 @@ Extract offsets for a PBO station
 }
 \examples{
 \dontrun{
-pbo_cola_offsets = PBO_get_offsets(station_name = "COLA")
+pbo_cola_offsets = PBO_get_offsets(station_name = "COLA", token = "xxx")
 pbo_cola_offsets
 }
 }

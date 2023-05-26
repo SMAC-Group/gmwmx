@@ -1,5 +1,5 @@
 #' @importFrom fs file_move
-get_file_with_cache <- function(url) {
+get_file_with_cache <- function(url, token) {
   
   base_name = tail(strsplit(url, '/')[[1]],1)
   folder= tempdir()
@@ -7,7 +7,7 @@ get_file_with_cache <- function(url) {
   cache_file = paste(folder, base_name, sep = '/')
   
   if (!file.exists(cache_file)) {
-    cmd = sprintf("wget %s -O %s.part", url, cache_file)
+    cmd = sprintf("wget %s -O %s.part --header 'Authorization: Bearer %s'", url, cache_file, token)
     ret = system(cmd, ignore.stdout = T, ignore.stderr = T)
     
     file_move(
@@ -28,20 +28,24 @@ get_file_with_cache <- function(url) {
 #' @param  station_name A \code{string} specifying the PBO station name.
 #' @param column A \code{string} specifying the name of the column to extract.
 #' @param time_range A \code{vector} of 2 specifying the time range of data to extract.
+#' @param token Your EarthScope API key.
 #' @param scale A \code{scalar} specifying an optional scaling parameter applied to the extracted data.
 #' @return A \code{gnssts} object that contains the data associated with the specified PBO station.
 #' @importFrom utils read.table
 #' @export
 #' @examples 
 #' \dontrun{
-#' pbo_cola_data = PBO_get_station("COLA", column="dE")
+#' pbo_cola_data = PBO_get_station("COLA", column="dE", token = "xxx")
 #' str(pbo_cola_data)
 #'}
-PBO_get_station <- function(station_name, column, time_range = c(-Inf, Inf), scale = 1) {
+PBO_get_station <- function(station_name, column, time_range = c(-Inf, Inf), scale = 1, token) {
   
+  if(missingArg(token)){
+    stop("Please provide your EarthScope API key.")
+  }
 
   file_url = sprintf('https://data.unavco.org/archive/gnss/products/position/%s/%s.pbo.igs14.pos', station_name, station_name)
-  tmpf = get_file_with_cache(file_url)
+  tmpf = get_file_with_cache(file_url, token)
   
   # determine how many header lines
   con = file(tmpf, "r")
@@ -73,7 +77,7 @@ PBO_get_station <- function(station_name, column, time_range = c(-Inf, Inf), sca
   ts = create.gnssts(
     t = data[,"JJJJJ.JJJJ"], 
     y = data[, column] * scale,
-    jumps = PBO_get_offsets(station_name)
+    jumps = PBO_get_offsets(station_name, token)
   )
   
   ts
@@ -83,17 +87,18 @@ PBO_get_station <- function(station_name, column, time_range = c(-Inf, Inf), sca
 #'
 #' @param station_name A \code{string} specifying the PBO station name.
 #' @return A \code{vector} specifying the offsets of a PBO station.
+#' @param token Your EarthScope API key.
 #' @examples 
 #' \dontrun{
-#' pbo_cola_offsets = PBO_get_offsets(station_name = "COLA")
+#' pbo_cola_offsets = PBO_get_offsets(station_name = "COLA", token = "xxx")
 #' pbo_cola_offsets
 #'}
 #' @export
-PBO_get_offsets <- function(station_name) {
+PBO_get_offsets <- function(station_name, token) {
   
   offset_file_url = 'https://data.unavco.org/archive/gnss/products/offset/cwu.kalts_nam08.off'
   
-  tmpf = get_file_with_cache(offset_file_url)
+  tmpf = get_file_with_cache(offset_file_url, token)
   
   data = read.table(tmpf, skip = 38, header = F, comment.char = '!')
   
