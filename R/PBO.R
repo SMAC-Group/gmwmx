@@ -38,6 +38,7 @@ get_file_with_cache <- function(url, token) {
 #' pbo_cola_data = PBO_get_station("COLA", column="dE", token = "xxx")
 #' str(pbo_cola_data)
 #'}
+#' @importFrom methods missingArg
 PBO_get_station <- function(station_name, column, time_range = c(-Inf, Inf), scale = 1, token) {
   
   if(missingArg(token)){
