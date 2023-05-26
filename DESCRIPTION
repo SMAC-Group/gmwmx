@@ -26,6 +26,7 @@ LinkingTo:
     Rcpp,
     RcppArmadillo
 Imports: 
+    methods,
     Rcpp,
     fs,
     stringi,
