@@ -1,0 +1,68 @@
+
+************************************
+    estimatetrend, version 1.9
+************************************
+0) FlickerGGM
+1) White
+Data format: MJD, Observations, Model
+Filename              : ./../1-output-CWU/KYVW_2.mom
+Number of observations: 3653
+Percentage of gaps    : 1.287
+
+----------------
+  AmmarGrag
+----------------
+No Polynomial degree set, using offset + linear trend
+No extra periodic signal is included.
+
+Number of CPU's used (threads) = 8
+
+   52    0.82592 
+  Return code IFAULT = 0
+
+  Estimate of minimizing value X*:
+  F(X*) = 1.108e+04
+
+  Number of iterations = 52
+  Number of restarts =   0
+
+Likelihood value
+--------------------
+min log(L)=-11082.276
+k         =11 + 1 + 1 = 13
+AIC       =22190.552
+BIC       =22271.026
+BIC_tp    =22247.134
+BIC_c     =22287.676
+ln_det_I  =10.649
+
+FlickerGGM:
+fraction  = 0.21082
+sigma     = 10.08466 mm/yr^0.25000
+d         =   0.5000 (fixed)
+kappa     =  -1.0000 (fixed)
+1-phi     = 6.880986e-06 (fixed)
+
+White:
+fraction  = 0.78918
+sigma     = 4.46320 mm
+No noise parameters to show
+
+STD of the driving noise: 5.02410
+bias : 14.315 +/- 5.150 mm (at 2012/12/31, 12:0:0.000)
+trend: 0.674 +/- 0.683 mm/year
+cos yearly : -2.312 +/- 0.427 mm
+sin yearly : -2.563 +/- 0.435 mm
+Amp yearly : 3.478 +/- 0.429 mm
+Pha yearly : -132.056 degrees
+cos hyearly : -0.589 +/- 0.309 mm
+sin hyearly : 0.186 +/- 0.316 mm
+Amp hyearly : 0.704 +/- 0.285 mm
+Pha hyearly : 162.473 degrees
+offset at 57776.5000 :   -2.37 +/-  1.80 mm
+offset at 55290.0000 :    4.91 +/-  2.55 mm
+offset at 56100.0000 :    0.70 +/-  2.55 mm
+tanh sse at 55290.0000 (T=  100.00) :   -3.44 +/-  4.09 mm
+tanh sse at 56100.0000 (T=  100.00) :    3.00 +/-  4.23 mm
+--> KYVW_2_out.mom
+Total computing time: 8.00000 sec
