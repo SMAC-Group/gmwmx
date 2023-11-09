@@ -38,6 +38,7 @@ matern_autocovariance = function(theta, n) {
   alpha = theta[3]
   
   acf = c(sigma2, sigma2*Ma(lambda* (1:(n-1)), alpha = alpha))
+  return(acf)
 }
 
 matern_theta_to_exp =  function(theta) {
