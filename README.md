@@ -21,6 +21,9 @@ Find the package vignettes and user's manual at the [package website](https://sm
 Below are instructions on how to install and make use of the `gmwmx`
 package.
 
+## ⚠️ Package Status: Migration to `gmwmx2`
+The `gmwmx` package is no longer maintained, and users are encouraged to migrate to [`gmwmx2`](https://github.com/SMAC-Group/gmwmx2) for all new work, feature requests, and bug reports. The original `gmwmx` package was designed to compare parameters estimated by GMWMX estimator with those obtained from the Maximum Likelihood Estimator (MLE) implemented in `Hector`, enabling replication of the examples and simulations presented in Cucci, D. A., Voirol, L., Kermarrec, G., Montillet, J. P., and Guerrier, S. (2022). As the methodological and computational development of GMWMX progressed, we transitioned toward a standalone implementation that no longer supports Hector. Incorporating the new computational techniques and structural improvements into the original `gmwmx` framework would have been difficult; therefore, future development and support will be provided exclusively through the [`gmwmx2`](https://github.com/SMAC-Group/gmwmx2) package.
+
 ## Installation Instructions
 
 The `gmwmx` package is available on both CRAN and GitHub. The CRAN
