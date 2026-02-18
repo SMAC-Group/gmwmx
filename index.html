@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Estimate Functional and Stochastic Parameters of Linear Models with Correlated Residuals • gmwmx</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -106,6 +105,12 @@
 <p>The <code>gmwmx</code> <code>R</code> package implements the Generalized Method of Wavelet Moments with Exogenous Inputs estimator (GMWMX) introduced in <a href="https://doi.org/10.1007/s00190-023-01702-8" class="external-link">Cucci, D. A., Voirol, L., Kermarrec, G., Montillet, J. P., and Guerrier, S. (2022)</a> and provides functions to estimate times series models that can be expressed as linear models with correlated residuals. Moreover, the <code>gmwmx</code> package provides tools to compare and analyze estimated models and methods to easily compare results with the Maximum Likelihood Estimator (MLE) implemented in <a href="https://teromovigo.com/hector/" class="external-link">Hector</a>, allowing to replicate the examples and simulations considered in <a href="https://doi.org/10.1007/s00190-023-01702-8" class="external-link">Cucci, D. A., Voirol, L., Kermarrec, G., Montillet, J. P., and Guerrier, S. (2022)</a>. In particular, this package implements a statistical inference framework for the functional and stochastic parameters of models such as those used to model Global Navigation Satellite System (GNSS) observations, enabling the comparison of the proposed method to the standard MLE estimates implemented in <a href="https://teromovigo.com/hector/" class="external-link">Hector</a>.</p>
 <p>Find the package vignettes and user’s manual at the <a href="https://smac-group.github.io/gmwmx/index.html" class="external-link">package website</a>.</p>
 <p>Below are instructions on how to install and make use of the <code>gmwmx</code> package.</p>
+<div class="section level2">
+<h2 id="id_️-package-status-migration-to-gmwmx2">⚠️ Package Status: Migration to <code>gmwmx2</code>
+<a class="anchor" aria-label="anchor" href="#id_%EF%B8%8F-package-status-migration-to-gmwmx2"></a>
+</h2>
+<p>The <code>gmwmx</code> package is no longer maintained, and users are encouraged to migrate to <a href="https://github.com/SMAC-Group/gmwmx2" class="external-link"><code>gmwmx2</code></a> for all new work, feature requests, and bug reports. The original <code>gmwmx</code> package was designed to compare parameters estimated by GMWMX estimator with those obtained from the Maximum Likelihood Estimator (MLE) implemented in <code>Hector</code>, enabling replication of the examples and simulations presented in Cucci, D. A., Voirol, L., Kermarrec, G., Montillet, J. P., and Guerrier, S. (2022). As the methodological and computational development of GMWMX progressed, we transitioned toward a standalone implementation that no longer supports Hector. Incorporating the new computational techniques and structural improvements into the original <code>gmwmx</code> framework would have been difficult; therefore, future development and support will be provided exclusively through the <a href="https://github.com/SMAC-Group/gmwmx2" class="external-link"><code>gmwmx2</code></a> package.</p>
+</div>
 <div class="section level2">
 <h2 id="installation-instructions">Installation Instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
 </h2>
@@ -203,9 +208,9 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Davide Antonio Cucci <br><small class="roles"> Author </small>  </li>
-<li>Lionel Voirol <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Stéphane Guerrier <br><small class="roles"> Author </small>  </li>
+<li>Davide Antonio Cucci <br><small class="roles"> Author </small>   </li>
+<li>Lionel Voirol <br><small class="roles"> Author, maintainer </small>   </li>
+<li>Stéphane Guerrier <br><small class="roles"> Author </small>   </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -232,7 +237,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

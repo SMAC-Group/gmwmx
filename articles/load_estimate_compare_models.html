@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Load data, estimate and compare models • gmwmx</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -150,7 +149,7 @@ location shifts (jumps).</p>
 <p>We can represent the signal as such:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">data_dobs</span><span class="op">$</span><span class="va">t</span>, <span class="va">data_dobs</span><span class="op">$</span><span class="va">y</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="" width="576" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
 <h2 id="estimate-a-model">Estimate a model<a class="anchor" aria-label="anchor" href="#estimate-a-model"></a>
@@ -319,7 +318,7 @@ time series and the Wavelet variance of residuals by calling the
 object.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_dobs_wn_plp_gmwmx</span><span class="op">)</span></span></code></pre></div>
-<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="576" style="display: block; margin: auto;"></p>
 <p>We can specify the number of iterations of the GMWMX to compute
 respectively the GMWMX-1 and GMWMX-2 or other iteration of the GMWMX
 with the argument <code>k_iter</code>. For example we can compute the
@@ -345,7 +344,7 @@ Likelihood Estimation (MLE) method implemented in <a href="http://segal.ubi.pt/h
 estimated model:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_dobs_wn_plp_mle</span><span class="op">)</span></span></code></pre></div>
-<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-16-1.png" class="r-plt" alt="" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_dobs_wn_plp_mle</span><span class="op">$</span><span class="va">beta_hat</span></span></code></pre></div>
 <pre><code><span><span class="co">##          bias         trend      A*cos(U)      A*sin(U)          jump </span></span>
@@ -384,14 +383,14 @@ this signal. More precisely let us consider:</p>
 <span>                                 ci <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_cola_wn_plp</span><span class="op">)</span></span></code></pre></div>
-<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-22-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-22-1.png" class="r-plt" alt="" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_cola_wn_fgn</span> <span class="op">=</span> <span class="fu"><a href="../reference/estimate_gmwmx.html">estimate_gmwmx</a></span><span class="op">(</span><span class="va">cola</span>, model_string <span class="op">=</span> <span class="st">"wn+fgn"</span>, theta_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.2</span><span class="op">)</span>,</span>
 <span>                                                          n_seasonal <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                                                          ci <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_cola_wn_fgn</span><span class="op">)</span></span></code></pre></div>
-<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-25-1.png" class="r-plt" alt="" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_cola_wn_matern</span> <span class="op">=</span> <span class="fu"><a href="../reference/estimate_gmwmx.html">estimate_gmwmx</a></span><span class="op">(</span><span class="va">cola</span>, model_string <span class="op">=</span> <span class="st">"wn+matern"</span>, </span>
 <span>                                    theta_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span><span class="op">)</span>,</span>
@@ -399,14 +398,14 @@ this signal. More precisely let us consider:</p>
 <span>                                    ci <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_cola_wn_matern</span><span class="op">)</span></span></code></pre></div>
-<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-28-1.png" class="r-plt" alt="" width="576" style="display: block; margin: auto;"></p>
 <p>You can compare estimated models with the function
 <code><a href="../reference/compare_fits.html">compare_fits()</a></code></p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_fits.html">compare_fits</a></span><span class="op">(</span><span class="va">fit_cola_wn_plp</span>, <span class="va">fit_cola_wn_matern</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in compare_fits(fit_cola_wn_plp, fit_cola_wn_matern): Provided fits do</span></span>
 <span><span class="co">## not esimate the same model.</span></span></code></pre>
-<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-29-1.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="load_estimate_compare_models_files/figure-html/unnamed-chunk-29-1.png" class="r-plt" alt="" width="768" style="display: block; margin: auto;"></p>
 </div>
   </div>
 
@@ -425,7 +424,7 @@ this signal. More precisely let us consider:</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
